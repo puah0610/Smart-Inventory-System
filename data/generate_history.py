@@ -63,20 +63,66 @@ def create_synthetic_history():
             receipt_id = str(uuid.uuid4())
             
             # 3. What are they buying? (Basket Generation)
-            # Pick 1 to 5 random items
-            basket_size = random.randint(1, 5)
+            basket_items = []
             
-            # Weighted random selection for realism
-            # Make a flat list with duplicates for weighting
-            weighted_products = []
-            for p in products:
+            # Helper to find product by substring
+            def find_products(keyword):
+                return [p for p in products if keyword.lower() in p[1].lower()]
+
+            # --- "Smart" Basket Logic for Bundles ---
+            # 1. Decide Primary Intent (Grocery vs Snack vs Drink)
+            intent_roll = random.random()
+            
+            if intent_roll < 0.4: # 40% Grocery Run
+                prods_to_pick = random.randint(3, 8)
+            elif intent_roll < 0.7: # 30% Snack Run
+                prods_to_pick = random.randint(1, 3)
+            else: # 30% Random
+                prods_to_pick = random.randint(1, 5)
+
+            # Pick Random Base Items
+            base_choices = random.sample(products, k=min(len(products), prods_to_pick))
+            
+            for p in base_choices:
+                if p not in basket_items:
+                    basket_items.append(p)
                 p_name = p[1]
-                if p_name in ['Banana', 'Mineral Water']: weight = 10
-                elif p_name in ['Toothbrush', 'Toothpaste']: weight = 5
-                else: weight = 2
-                weighted_products.extend([p] * weight)
                 
-            basket_items = random.sample(weighted_products, basket_size)
+                # --- APPLY RULES FOR MARKET BASKET ANALYSIS ---
+                # Rule 1: Pasta -> Sauce (80% chance)
+                if "Pasta" in p_name and random.random() < 0.8:
+                    sauces = find_products("Sauce")
+                    if sauces: 
+                        s = random.choice(sauces)
+                        if s not in basket_items: basket_items.append(s)
+
+                # Rule 2: Cereal -> Milk (75% chance)
+                if "Cereal" in p_name and random.random() < 0.75:
+                    milks = find_products("Milk")
+                    if milks:
+                        m = random.choice(milks)
+                        if m not in basket_items: basket_items.append(m)
+
+                # Rule 3: Bread -> Butter/Jam (60% chance)
+                if "Bread" in p_name and random.random() < 0.6:
+                    spreads = find_products("Butter")
+                    if spreads:
+                        b = random.choice(spreads)
+                        if b not in basket_items: basket_items.append(b)
+
+                # Rule 4: Chips -> Cola (50% chance)
+                if "Chips" in p_name and random.random() < 0.5:
+                    drinks = find_products("Cola")
+                    if drinks:
+                        d = random.choice(drinks)
+                        if d not in basket_items: basket_items.append(d)
+
+                # Rule 5: Beer -> Chips (Party)
+                if "Beer" in p_name and random.random() < 0.6:
+                    snacks = find_products("Chips") + find_products("Nuts")
+                    if snacks:
+                        s = random.choice(snacks)
+                        if s not in basket_items: basket_items.append(s)
             
             # Deduplicate items in basket (sum quantities instead)
             basket_summary = {}
