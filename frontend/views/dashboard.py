@@ -1,163 +1,140 @@
 import streamlit as st
 import requests
 import pandas as pd
+import sys
+import os
 
-API_URL = "http://127.0.0.1:8000"
+# Add parent directory to path to allow importing config
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from config import API_URL
 
 def show():
-    st.header("Dashboard & Analytics")
+    st.header("Smart Dashboard")
     
     try:
         response = requests.get(f"{API_URL}/analytics/summary")
         if response.status_code == 200:
             data = response.json()
             
-            # --- 1. Top Level Metrics ---
-            col1, col2, col3 = st.columns(3)
-            with col1:
-                st.metric("Total Revenue", f"${data['total_revenue']:,.2f}")
-            with col2:
-                st.metric("Total Profit", f"${data['total_profit']:,.2f}")
-            with col3:
-                st.metric("Total Transactions", data['sales_count'])
+            # --- 1. Top Metrics (Key Performance Indicators) ---
+            mcol1, mcol2, mcol3, mcol4 = st.columns(4)
+            
+            daily_stats = data.get("daily", {})
+            today_rev = daily_stats.get("today_revenue", 0)
+            pct = daily_stats.get("pct_change", 0)
+            
+            mcol1.metric("Today's Revenue", f"${today_rev:,.2f}", f"{pct:+.1f}% vs Yesterday")
+            mcol2.metric("Total Revenue", f"${data['total_revenue']:,.2f}")
+            mcol3.metric("Total Profit", f"${data['total_profit']:,.2f}")
+            mcol4.metric("Sales Count", data['sales_count'])
             
             st.divider()
 
-            # --- AI Insights Section ---
-            if "ai_insights" in data and data["ai_insights"]:
-                st.subheader("🤖 AI Patterns & Actionable Advice")
-                
-                # Separate insights by type
-                patterns = [i for i in data["ai_insights"] if i['type'] == 'bundle']
-                actions = [i for i in data["ai_insights"] if i['type'] in ['promo', 'clearance', 'forecast']]
-                
-                c_ai1, c_ai2 = st.columns(2)
-                
-                with c_ai1:
-                    st.markdown("#### 🧠 Shopping Patterns")
-                    if patterns:
-                        for p in patterns:
-                            st.info(f"**Trend Detected:** {p['message']} ({p['count']} times)")
-                    else:
-                        st.caption("No patterns detected yet. Record more sales!")
-
-                with c_ai2:
-                    st.markdown("#### 🚀 Recommended Actions")
-                    if actions:
-                        for a in actions:
-                            if a['type'] == 'promo':
-                                st.success(a['message'])
-                            elif a['type'] == 'forecast':
-                                st.error(a['message']) # Use error (red) for stockout alerts
-                            else:
-                                st.warning(a['message'])
-                    else:
-                        st.caption("Inventory levels look efficient. No actions needed.")
+            # --- 2. Historical & Predictive Charts ---
+            col_left, col_right = st.columns(2)
             
-            st.divider()
+            with col_left:
+                st.subheader("📉 Past 30 Days Trend")
+                try:
+                    hist_res = requests.get(f"{API_URL}/analytics/sales-history")
+                    if hist_res.status_code == 200:
+                        h_data = hist_res.json().get("history", [])
+                        if h_data:
+                            df_hist = pd.DataFrame(h_data)
+                            df_hist['date'] = pd.to_datetime(df_hist['date']).dt.strftime('%d %b')
+                            st.line_chart(df_hist.set_index('date')['revenue'], color="#29B5E8")
+                        else:
+                            st.info("No historical data yet.")
+                except:
+                    st.caption("History engine unavailable.")
 
-            # --- 2. Charts & Tables ---
-            c1, c2 = st.columns([2, 1])
-            
-            with c1:
-                st.subheader("🏆 Top Selling Products")
-                if data['top_selling']:
-                    df_top = pd.DataFrame(data['top_selling'])
-                    # Simple Bar Chart
-                    st.bar_chart(df_top.set_index("name"))
-                else:
-                    st.info("No sales data yet.")
-            
-            with c2:
-                st.subheader("⚠️ Low Stock Alert")
-                if data['low_stock_items']:
-                    df_low = pd.DataFrame(data['low_stock_items'])
-                    st.dataframe(
-                        df_low[['name', 'stock']], 
-                        hide_index=True, 
-                        width='stretch'
-                    )
-                    
-                    # --- Automated Supplier Alert ---
-                    st.markdown("#### Actions")
-                    
-                    # Generate a draft email setup
-                    if st.button("📧 Draft Supplier Email"):
-                        # Create an email body
-                        items_list = "\n".join([f"- {row['name']} (Current: {row['stock']})" for _, row in df_low.iterrows()])
-                        email_body = f"""Dear Supplier,
-
-Please process an urgent restock for the following items which are below safety levels:
-
-{items_list}
-
-Please confirm delivery date.
-
-Best,
-Smart Inventory Manager"""
-                        
-                        st.code(email_body, language="text")
-                        st.caption("Copy the text above and send to your supplier.")
-                        st.toast("Email Draft Generated!", icon="📝")
-                        
-                else:
-                    st.success("All stock levels healthy!")
-
-            st.divider()
-
-            # --- 3. Demand Forecast (New) ---
-            st.subheader("📈 AI Demand Forecast (Next 7 Days)")
-            try:
-                # Use a unique key for the error to avoid UI weirdness
-                with st.spinner("Calculating AI Forecast..."):
+            with col_right:
+                st.subheader("📈 AI Demand Forecast")
+                try:
                     forecast_res = requests.get(f"{API_URL}/analytics/forecast")
                     if forecast_res.status_code == 200:
                         f_data = forecast_res.json().get("forecast", [])
                         if f_data:
                             df_forecast = pd.DataFrame(f_data)
-                            df_forecast['date'] = pd.to_datetime(df_forecast['date'])
-                            
-                            # Aggregate just in case multiple entries per date
-                            df_forecast = df_forecast.groupby('date').sum()
-                            
-                            # Use Bar Chart for clearer daily separation
-                            st.bar_chart(df_forecast, color="#29B5E8")
-                            st.caption("Projected sales quantity for the upcoming week.")
+                            df_forecast['date'] = pd.to_datetime(df_forecast['date']).dt.strftime('%a %d')
+                            st.area_chart(df_forecast.set_index('date')['predicted_quantity'], color="#FF4B4B")
                         else:
-                            st.info("Record more sales data to unlock AI Forecasting.")
-            except Exception as e:
-                st.warning(f"Forecast Engine Unavailable: {e}")
-            
+                            st.info("Record more sales for AI predictions.")
+                except:
+                    st.caption("Forecast engine unavailable.")
+
             st.divider()
 
-            # --- 4. Market Basket Analysis (New) ---
-            st.subheader("🛍️ Market Basket Analysis (Product Associations)")
-            st.caption("What do customers buy together? (Likelihood based on history)")
+            # --- 3. "Actionable" AI Section ---
+            st.subheader("🤖 Smart Insights & Recommendations")
             
+            c_patterns, c_actions = st.columns([1, 1.5])
+            
+            with c_patterns:
+                st.markdown("#### 🛍️ Shopping Patterns")
+                patterns = [i for i in data.get("ai_insights", []) if i['type'] == 'bundle']
+                
+                with st.container(height=300): # Scrollable container
+                    if patterns:
+                        for p in patterns:
+                            st.info(f"**Pattern:** {p['message']}")
+                    else:
+                        st.caption("No patterns detected yet.")
+                
+            with c_actions:
+                st.markdown("#### 🚀 Recommended Actions")
+                actions = [i for i in data.get("ai_insights", []) if i['type'] in ['promo', 'clearance', 'forecast', 'alert']]
+                
+                with st.container(height=300): # Scrollable container
+                    if actions:
+                        for a in actions:
+                            if a.get('severity') == 'high':
+                                st.error(a['message'])
+                            elif a['type'] == 'promo':
+                                st.success(a['message'])
+                            else:
+                                st.warning(a['message'])
+                    else:
+                        st.caption("No urgent actions identified.")
+
+            # --- 3.5 Detailed Market Basket Analysis ---
+            st.markdown("#### 🔍 Detailed Product Associations")
             try:
                 mba_res = requests.get(f"{API_URL}/analytics/market-basket")
                 if mba_res.status_code == 200:
-                    mba_data = mba_res.json().get("rules", [])
-                    if mba_data:
+                    rules = mba_res.json().get("rules", [])
+                    if rules:
                         # Format for display
                         display_data = []
-                        for rule in mba_data:
+                        for rule in rules:
                             display_data.append({
-                                "If Customer Buys...": rule['antecedent'],
+                                "If Client Buys...": rule['antecedent'],
                                 "They Also Buy...": rule['consequent'],
-                                "Chance (%)": f"{rule['confidence']}%",
+                                "Likelihood (%)": f"{rule['confidence']}%",
                                 "Occurrences": rule['frequency']
                             })
-                        
                         st.dataframe(pd.DataFrame(display_data), use_container_width=True, hide_index=True)
-                        
-                        top_rule = mba_data[0]
-                        st.info(f"💡 **Top Insight:** Customers buying **{top_rule['antecedent']}** are {top_rule['confidence']}% likely to buy **{top_rule['consequent']}**!")
-                        
                     else:
-                        st.info("No strong purchasing patterns detected yet. Need more diverse transactions.")
-            except Exception as e:
-                st.warning(f"Market Basket Analysis Unavailable: {e}")
+                        st.caption("Not enough diversity in transactions to show associations.")
+            except: pass
+
+            st.divider()
+
+            # --- 4. Inventory Quick Look ---
+            q_left, q_right = st.columns(2)
+            with q_left:
+                st.subheader("🏆 Top Sellers")
+                if data['top_selling']:
+                    st.bar_chart(pd.DataFrame(data['top_selling']).set_index("name"))
+            
+            with q_right:
+                st.subheader("⚠️ Low Stock Alert")
+                if data['low_stock_items']:
+                    st.table(pd.DataFrame(data['low_stock_items'])[['name', 'stock']])
+                    if st.button("Generate Supplier Email"):
+                        st.code("Subject: Restock Request\n\nItems needed: " + ", ".join([p['name'] for p in data['low_stock_items']]))
+                else:
+                    st.success("Stock levels are healthy!")
 
         else:
             st.error("Failed to load analytics.")

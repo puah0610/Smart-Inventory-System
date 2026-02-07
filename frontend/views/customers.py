@@ -2,8 +2,10 @@ import streamlit as st
 import requests
 import pandas as pd
 from datetime import datetime
-
-API_URL = "http://127.0.0.1:8000"
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from config import API_URL
 
 def show():
     st.header("Customer Database")
@@ -56,15 +58,18 @@ def show():
                             st.markdown(f"### {customer['name']}")
                             st.caption(f"Member since: {datetime.fromisoformat(customer['created_at']).strftime('%b %Y')}")
                             
+                            # Display Segment prominently
+                            st.info(f"**Customer Segment:** {profile['segment']}")
+
                             m1, m2, m3 = st.columns(3)
                             m1.metric("Total Spent", f"${profile['total_spent']:,.2f}")
-                            m2.metric("Orders", profile['total_orders'])
+                            m2.metric("Orders", profile['visit_count'])
                             m3.metric("Last Visit", profile['last_visit'].split("T")[0] if profile['last_visit'] else "Never")
                             
                             st.divider()
                             st.markdown("#### Item Preferences")
-                            if profile['favorite_items']:
-                                prefs = pd.DataFrame(profile['favorite_items']).rename(columns={"product_name": "Product", "total_quantity": "Qty Bought"})
+                            if profile['top_items']:
+                                prefs = pd.DataFrame(profile['top_items']).rename(columns={"name": "Product", "qty": "Qty Bought"})
                                 st.dataframe(prefs, hide_index=True)
                             else:
                                 st.info("No purchase history yet.")

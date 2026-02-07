@@ -8,10 +8,15 @@ from collections import Counter
 from sqlalchemy.orm import Session
 from sqlalchemy import func, desc
 from .. import models
+from .notification_service import NotificationService
+from ..logger import get_logger
+
+logger = get_logger(__name__)
 
 class AnalyticsService:
     def __init__(self, db_engine):
         self.db_engine = db_engine
+        self.notifier = NotificationService()
 
     def predict_demand(self, days_ahead=7):
         """
@@ -24,8 +29,10 @@ class AnalyticsService:
             if df.empty:
                 return []
 
-            df['timestamp'] = pd.to_datetime(df['timestamp'])
-            
+            # Fix for SQLite storing datetimes with/without microseconds
+            df['timestamp'] = pd.to_datetime(df['timestamp'], format='mixed', errors='coerce')
+            df = df.dropna(subset=['timestamp'])
+
             # Aggregate daily sales
             daily_sales = df.groupby(df['timestamp'].dt.date)['quantity'].sum().reset_index()
             daily_sales['date_ordinal'] = pd.to_datetime(daily_sales['timestamp']).map(datetime.toordinal)
@@ -43,10 +50,12 @@ class AnalyticsService:
             # Generate future dates
             last_date = pd.to_datetime(daily_sales['timestamp']).max()
             future_dates = [last_date + timedelta(days=x) for x in range(1, days_ahead + 1)]
-            future_ordinals = np.array([d.toordinal() for d in future_dates]).reshape(-1, 1)
+            
+            # Create DataFrame with same feature name to avoid warnings
+            future_X = pd.DataFrame({'date_ordinal': [d.toordinal() for d in future_dates]})
             
             # Predict
-            predictions = model.predict(future_ordinals)
+            predictions = model.predict(future_X)
             
             forecast_data = []
             for date, qty in zip(future_dates, predictions):
@@ -57,7 +66,7 @@ class AnalyticsService:
             
             return forecast_data
         except Exception as e:
-            print(f"Error in prediction: {e}")
+            logger.error(f"Error in prediction: {e}")
             return []
 
     def get_market_basket_rules(self, db: Session, min_occurrence=2):
@@ -265,4 +274,40 @@ class AnalyticsService:
                     "severity": urgency
                 })
                 
+        # 4. Declining Sales Alert (Sales Drop Analysis)
+        two_weeks_ago = datetime.utcnow() - timedelta(days=14)
+        one_week_ago = datetime.utcnow() - timedelta(days=7)
+        
+        recent_sales = db.query(models.Transaction.product_id, func.sum(models.Transaction.quantity))\
+            .filter(models.Transaction.transaction_type == 'sale')\
+            .filter(models.Transaction.timestamp >= one_week_ago)\
+            .group_by(models.Transaction.product_id).all()
+        
+        prev_sales = db.query(models.Transaction.product_id, func.sum(models.Transaction.quantity))\
+            .filter(models.Transaction.transaction_type == 'sale')\
+            .filter(models.Transaction.timestamp >= two_weeks_ago)\
+            .filter(models.Transaction.timestamp < one_week_ago)\
+            .group_by(models.Transaction.product_id).all()
+            
+        recent_map = {pid: qty for pid, qty in recent_sales}
+        prev_map = {pid: qty for pid, qty in prev_sales}
+        
+        for pid, prev_qty in prev_map.items():
+            recent_qty = recent_map.get(pid, 0)
+            # Fetch product only if we have a match to avoid N+1 queries ideally, but acceptable here
+            product = db.query(models.Product).filter(models.Product.id == pid).first()
+            
+            if product and prev_qty >= 3 and recent_qty <= (prev_qty * 0.4):
+                 msg = f"📉 **Sales Drop**: '{product.name}' sales dropped significantly this week. Promotion Recommended."
+                 
+                 # --- TRIGGER NOTIFICATION (Logic Layer -> Notification Engine) ---
+                 self.notifier.notify_admin("Sales Alert", f"Sales for {product.name} dropped by >60%!", severity="high")
+                 
+                 insights.append({
+                    "type": "alert",
+                    "message": msg,
+                    "severity": "medium"
+                })
+
         return insights
+

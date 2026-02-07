@@ -1,0 +1,759 @@
+2026-02-07 15:20:48,451 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 15:20:48,452 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:20:48,452 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 15:20:48,456 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 15:20:48,457 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:20:48,458 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 15:20:48,468 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 15:20:48,469 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:20:48,469 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 15:20:48,473 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 15:20:48,473 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:20:48,474 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 15:20:48,475 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 15:20:48,475 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:20:48,475 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 15:20:48,483 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 15:20:48,483 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:20:48,484 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 15:20:48,486 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 15:20:48,486 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:20:48,486 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 15:20:48,496 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 15:20:48,497 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:20:48,498 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 15:20:48,503 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 15:20:48,504 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:20:48,504 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 15:20:48,507 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 15:20:48,507 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:20:48,508 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 15:20:48,510 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 15:20:48,511 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:20:48,512 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 15:20:48,514 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 15:20:48,515 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:20:48,515 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 15:21:08,605 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 15:21:08,606 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:21:08,606 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 15:21:08,609 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 15:21:08,610 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:21:08,610 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 15:21:08,620 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 15:21:08,620 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:21:08,621 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 15:21:08,624 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 15:21:08,625 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:21:08,625 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 15:21:08,628 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 15:21:08,629 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:21:08,629 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 15:21:08,640 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 15:21:08,640 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:21:08,641 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 15:21:08,644 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 15:21:08,644 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:21:08,645 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 15:21:08,656 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 15:21:08,656 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:21:08,657 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 15:21:08,663 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 15:21:08,663 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:21:08,664 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 15:21:08,667 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 15:21:08,668 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:21:08,668 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 15:21:08,671 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 15:21:08,672 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:21:08,672 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 15:21:08,674 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 15:21:08,675 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 15:21:08,676 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 16:18:21,594 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 16:18:21,595 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:21,596 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 16:18:21,597 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 16:18:21,598 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:21,598 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 16:18:21,601 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 16:18:21,601 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:21,601 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 16:18:21,603 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 16:18:21,603 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:21,603 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 16:18:21,604 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 16:18:21,604 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:21,604 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 16:18:21,611 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 16:18:21,611 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:21,612 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 16:18:21,613 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 16:18:21,614 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:21,614 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 16:18:21,617 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 16:18:21,617 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:21,617 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 16:18:21,619 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 16:18:21,619 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:21,620 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 16:18:21,622 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 16:18:21,622 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:21,622 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 16:18:21,624 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 16:18:21,624 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:21,624 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 16:18:21,626 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 16:18:21,626 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:21,626 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 16:18:50,972 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 16:18:50,972 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:50,972 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 16:18:50,975 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 16:18:50,976 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:50,976 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 16:18:50,984 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 16:18:50,984 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:50,985 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 16:18:50,986 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 16:18:50,987 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:50,987 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 16:18:50,988 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 16:18:50,989 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:50,989 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 16:18:50,996 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 16:18:50,996 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:50,997 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 16:18:50,998 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 16:18:50,998 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:50,999 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 16:18:51,003 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 16:18:51,003 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:51,003 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 16:18:51,007 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 16:18:51,008 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:51,008 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 16:18:51,012 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 16:18:51,012 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:51,013 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 16:18:51,014 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 16:18:51,014 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:51,014 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 16:18:51,015 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 16:18:51,015 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:18:51,015 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 16:21:35,297 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 16:21:35,297 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:35,298 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 16:21:35,299 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 16:21:35,299 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:35,299 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 16:21:35,301 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 16:21:35,302 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:35,302 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 16:21:35,303 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 16:21:35,304 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:35,304 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 16:21:35,304 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 16:21:35,304 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:35,305 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 16:21:35,308 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 16:21:35,308 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:35,308 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 16:21:35,309 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 16:21:35,309 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:35,309 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 16:21:35,313 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 16:21:35,313 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:35,313 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 16:21:35,315 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 16:21:35,315 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:35,315 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 16:21:35,316 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 16:21:35,317 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:35,317 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 16:21:35,318 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 16:21:35,318 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:35,319 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 16:21:35,319 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 16:21:35,319 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:35,320 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 16:21:44,251 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 16:21:44,252 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:44,252 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 16:21:44,257 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 16:21:44,258 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:44,258 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 16:21:44,271 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 16:21:44,272 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:44,273 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 16:21:44,280 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 16:21:44,281 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:44,281 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 16:21:44,284 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 16:21:44,284 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:44,284 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 16:21:44,297 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 16:21:44,297 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:44,298 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 16:21:44,299 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 16:21:44,300 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:44,300 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 16:21:44,312 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 16:21:44,313 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:44,313 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 16:21:44,320 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 16:21:44,321 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:44,321 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 16:21:44,327 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 16:21:44,327 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:44,328 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 16:21:44,333 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 16:21:44,333 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:44,333 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 16:21:44,335 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 16:21:44,335 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:21:44,336 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 16:39:13,248 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 16:39:13,249 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:13,249 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 16:39:13,250 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 16:39:13,250 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:13,250 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 16:39:13,252 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 16:39:13,252 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:13,253 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 16:39:13,254 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 16:39:13,254 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:13,254 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 16:39:13,254 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 16:39:13,255 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:13,255 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 16:39:13,257 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 16:39:13,257 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:13,257 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 16:39:13,258 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 16:39:13,258 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:13,258 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 16:39:13,261 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 16:39:13,261 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:13,262 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 16:39:13,263 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 16:39:13,263 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:13,264 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 16:39:13,264 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 16:39:13,264 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:13,265 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 16:39:13,265 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 16:39:13,265 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:13,266 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 16:39:13,266 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 16:39:13,266 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:13,266 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 16:39:23,710 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 16:39:23,710 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:23,711 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 16:39:23,712 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 16:39:23,712 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:23,713 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 16:39:23,718 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 16:39:23,718 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:23,718 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 16:39:23,721 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 16:39:23,721 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:23,722 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 16:39:23,723 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 16:39:23,723 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:23,723 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 16:39:23,728 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 16:39:23,728 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:23,728 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 16:39:23,729 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 16:39:23,729 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:23,730 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 16:39:23,732 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 16:39:23,733 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:23,733 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 16:39:23,735 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 16:39:23,735 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:23,735 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 16:39:23,737 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 16:39:23,737 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:23,737 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 16:39:23,738 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 16:39:23,738 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:23,739 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 16:39:23,739 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 16:39:23,740 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:39:23,740 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 16:40:41,193 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 16:40:41,193 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:41,194 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 16:40:41,195 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 16:40:41,196 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:41,196 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 16:40:41,202 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 16:40:41,202 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:41,202 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 16:40:41,206 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 16:40:41,207 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:41,207 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 16:40:41,208 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 16:40:41,208 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:41,209 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 16:40:41,215 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 16:40:41,215 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:41,216 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 16:40:41,217 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 16:40:41,218 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:41,218 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 16:40:41,223 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 16:40:41,223 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:41,223 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 16:40:41,225 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 16:40:41,225 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:41,226 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 16:40:41,227 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 16:40:41,227 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:41,227 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 16:40:41,229 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 16:40:41,229 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:41,229 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 16:40:41,230 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 16:40:41,230 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:41,230 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 16:40:46,800 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 16:40:46,800 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:46,800 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 16:40:46,802 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 16:40:46,803 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:46,803 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 16:40:46,808 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 16:40:46,809 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:46,809 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 16:40:46,811 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 16:40:46,812 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:46,812 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 16:40:46,813 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 16:40:46,814 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:46,814 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 16:40:46,818 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 16:40:46,819 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:46,819 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 16:40:46,821 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 16:40:46,822 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:46,822 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 16:40:46,826 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 16:40:46,826 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:46,826 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 16:40:46,830 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 16:40:46,830 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:46,830 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 16:40:46,831 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 16:40:46,832 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:46,832 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 16:40:46,832 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 16:40:46,833 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:46,833 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 16:40:46,833 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 16:40:46,833 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:40:46,833 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 16:45:04,357 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 16:45:04,357 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:45:04,357 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 16:45:04,359 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 16:45:04,359 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:45:04,359 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 16:45:04,363 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 16:45:04,364 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:45:04,364 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 16:45:04,365 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 16:45:04,365 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:45:04,365 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 16:45:04,366 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 16:45:04,367 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:45:04,367 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 16:45:04,372 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 16:45:04,372 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:45:04,373 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 16:45:04,373 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 16:45:04,374 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:45:04,374 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 16:45:04,379 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 16:45:04,379 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:45:04,379 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 16:45:04,381 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 16:45:04,382 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:45:04,382 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 16:45:04,384 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 16:45:04,384 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:45:04,384 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 16:45:04,386 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 16:45:04,387 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:45:04,387 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 16:45:04,388 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 16:45:04,389 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:45:04,389 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 16:51:31,320 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 16:51:31,320 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:51:31,320 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 16:51:31,322 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 16:51:31,322 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:51:31,322 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 16:51:31,324 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 16:51:31,325 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:51:31,325 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 16:51:31,327 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 16:51:31,327 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:51:31,328 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 16:51:31,328 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 16:51:31,329 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:51:31,329 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 16:51:31,332 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 16:51:31,332 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:51:31,332 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 16:51:31,333 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 16:51:31,333 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:51:31,333 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 16:51:31,338 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 16:51:31,338 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:51:31,338 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 16:51:31,341 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 16:51:31,342 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:51:31,342 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 16:51:31,344 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 16:51:31,344 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:51:31,344 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 16:51:31,345 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 16:51:31,345 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:51:31,345 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 16:51:31,346 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 16:51:31,346 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:51:31,346 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 16:53:44,620 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 16:53:44,620 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:53:44,621 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 16:53:44,623 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 16:53:44,624 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:53:44,624 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 16:53:44,629 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 16:53:44,630 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:53:44,630 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 16:53:44,635 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 16:53:44,636 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:53:44,637 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 16:53:44,639 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 16:53:44,639 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:53:44,640 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 16:53:44,646 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 16:53:44,647 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:53:44,647 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 16:53:44,648 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 16:53:44,648 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:53:44,649 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 16:53:44,653 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 16:53:44,653 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:53:44,653 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 16:53:44,655 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 16:53:44,656 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:53:44,656 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 16:53:44,658 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 16:53:44,658 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:53:44,658 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 16:53:44,660 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 16:53:44,661 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:53:44,661 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 16:53:44,662 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 16:53:44,662 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:53:44,662 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 16:56:41,930 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 16:56:41,931 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:41,931 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 16:56:41,932 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 16:56:41,932 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:41,932 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 16:56:41,938 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 16:56:41,938 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:41,939 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 16:56:41,941 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 16:56:41,942 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:41,942 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 16:56:41,943 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 16:56:41,943 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:41,944 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 16:56:41,951 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 16:56:41,952 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:41,952 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 16:56:41,954 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 16:56:41,954 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:41,954 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 16:56:41,961 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 16:56:41,961 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:41,962 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 16:56:41,963 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 16:56:41,963 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:41,963 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 16:56:41,965 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 16:56:41,965 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:41,965 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 16:56:41,967 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 16:56:41,967 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:41,968 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 16:56:41,969 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 16:56:41,969 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:41,969 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 16:56:42,634 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 16:56:42,634 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:42,635 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 16:56:42,641 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 16:56:42,642 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:42,642 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 16:56:42,656 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 16:56:42,657 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:42,657 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 16:56:42,661 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 16:56:42,662 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:42,662 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 16:56:42,665 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 16:56:42,666 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:42,666 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 16:56:42,685 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 16:56:42,686 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:42,686 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 16:56:42,689 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 16:56:42,689 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:42,690 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 16:56:42,702 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 16:56:42,702 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:42,703 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 16:56:42,707 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 16:56:42,708 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:42,708 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 16:56:42,712 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 16:56:42,712 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:42,713 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 16:56:42,718 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 16:56:42,719 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:42,720 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 16:56:42,725 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 16:56:42,726 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:42,727 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 16:56:45,822 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 16:56:45,822 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:45,823 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 16:56:45,824 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 16:56:45,825 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:45,825 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 16:56:45,830 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 16:56:45,830 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:45,830 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 16:56:45,832 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 16:56:45,832 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:45,832 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 16:56:45,833 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 16:56:45,833 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:45,833 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 16:56:45,837 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 16:56:45,837 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:45,837 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 16:56:45,838 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 16:56:45,838 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:45,838 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 16:56:45,841 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 16:56:45,841 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:45,841 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 16:56:45,842 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 16:56:45,842 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:45,843 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 16:56:45,844 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 16:56:45,845 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:45,845 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 16:56:45,846 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 16:56:45,846 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:45,846 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 16:56:45,846 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 16:56:45,847 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 16:56:45,847 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 17:03:58,691 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 17:03:58,691 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:03:58,692 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 17:03:58,696 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 17:03:58,696 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:03:58,697 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 17:03:58,704 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 17:03:58,705 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:03:58,705 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 17:03:58,709 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 17:03:58,710 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:03:58,710 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 17:03:58,711 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 17:03:58,711 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:03:58,711 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 17:03:58,718 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 17:03:58,719 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:03:58,719 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 17:03:58,720 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 17:03:58,720 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:03:58,720 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 17:03:58,729 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 17:03:58,730 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:03:58,731 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 17:03:58,735 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 17:03:58,736 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:03:58,736 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 17:03:58,740 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 17:03:58,740 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:03:58,741 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 17:03:58,746 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 17:03:58,746 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:03:58,747 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 17:03:58,749 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 17:03:58,750 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:03:58,751 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 17:09:59,580 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toothbrush dropped by >60%! (Severity: high)
+2026-02-07 17:09:59,581 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:09:59,581 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toothbrush dropped by >60%!
+2026-02-07 17:09:59,582 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 17:09:59,582 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:09:59,583 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 17:09:59,586 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 17:09:59,586 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:09:59,586 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 17:09:59,587 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 17:09:59,587 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:09:59,587 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 17:09:59,588 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 17:09:59,588 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:09:59,588 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 17:09:59,592 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 17:09:59,592 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:09:59,592 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 17:09:59,593 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 17:09:59,593 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:09:59,593 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 17:09:59,597 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 17:09:59,597 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:09:59,597 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 17:09:59,598 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Laundry Detergent 2L dropped by >60%! (Severity: high)
+2026-02-07 17:09:59,598 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:09:59,598 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Laundry Detergent 2L dropped by >60%!
+2026-02-07 17:09:59,599 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 17:09:59,599 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:09:59,600 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 17:09:59,601 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 17:09:59,601 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:09:59,601 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 17:09:59,602 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 17:09:59,602 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:09:59,602 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 17:09:59,603 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 17:09:59,603 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:09:59,603 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 17:20:21,292 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 17:20:21,293 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:21,293 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 17:20:21,303 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 17:20:21,304 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:21,305 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 17:20:21,311 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 17:20:21,312 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:21,313 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 17:20:21,316 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 17:20:21,317 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:21,318 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 17:20:21,332 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 17:20:21,332 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:21,333 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 17:20:21,336 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 17:20:21,336 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:21,337 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 17:20:21,352 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 17:20:21,353 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:21,353 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 17:20:21,356 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Laundry Detergent 2L dropped by >60%! (Severity: high)
+2026-02-07 17:20:21,356 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:21,357 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Laundry Detergent 2L dropped by >60%!
+2026-02-07 17:20:21,360 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 17:20:21,361 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:21,361 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 17:20:21,365 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 17:20:21,366 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:21,366 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 17:20:21,370 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 17:20:21,371 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:21,371 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 17:20:21,374 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 17:20:21,374 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:21,375 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 17:20:44,685 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 17:20:44,686 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:44,686 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 17:20:44,689 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 17:20:44,689 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:44,689 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 17:20:44,691 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 17:20:44,691 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:44,691 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 17:20:44,692 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 17:20:44,692 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:44,693 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 17:20:44,702 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 17:20:44,702 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:44,702 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 17:20:44,704 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 17:20:44,705 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:44,705 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 17:20:44,709 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 17:20:44,710 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:44,710 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 17:20:44,711 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Laundry Detergent 2L dropped by >60%! (Severity: high)
+2026-02-07 17:20:44,712 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:44,712 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Laundry Detergent 2L dropped by >60%!
+2026-02-07 17:20:44,714 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 17:20:44,714 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:44,714 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 17:20:44,715 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 17:20:44,716 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:44,716 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 17:20:44,717 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 17:20:44,717 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:44,717 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 17:20:44,718 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 17:20:44,718 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:20:44,718 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!
+2026-02-07 17:21:11,634 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water dropped by >60%! (Severity: high)
+2026-02-07 17:21:11,635 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:21:11,635 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water dropped by >60%!
+2026-02-07 17:21:11,644 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Whole Wheat Bread dropped by >60%! (Severity: high)
+2026-02-07 17:21:11,645 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:21:11,645 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Whole Wheat Bread dropped by >60%!
+2026-02-07 17:21:11,649 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Chocolate Muffin dropped by >60%! (Severity: high)
+2026-02-07 17:21:11,650 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:21:11,650 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Chocolate Muffin dropped by >60%!
+2026-02-07 17:21:11,652 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Mineral Water 600ml dropped by >60%! (Severity: high)
+2026-02-07 17:21:11,652 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:21:11,653 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Mineral Water 600ml dropped by >60%!
+2026-02-07 17:21:11,661 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Baby Spinach Mix dropped by >60%! (Severity: high)
+2026-02-07 17:21:11,662 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:21:11,662 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Baby Spinach Mix dropped by >60%!
+2026-02-07 17:21:11,663 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Tomatoes (500g) dropped by >60%! (Severity: high)
+2026-02-07 17:21:11,663 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:21:11,663 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Tomatoes (500g) dropped by >60%!
+2026-02-07 17:21:11,669 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%! (Severity: high)
+2026-02-07 17:21:11,669 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:21:11,669 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Toilet Paper (12pk) dropped by >60%!
+2026-02-07 17:21:11,671 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Laundry Detergent 2L dropped by >60%! (Severity: high)
+2026-02-07 17:21:11,671 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:21:11,671 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Laundry Detergent 2L dropped by >60%!
+2026-02-07 17:21:11,673 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for AA Batteries (4pk) dropped by >60%! (Severity: high)
+2026-02-07 17:21:11,673 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:21:11,673 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for AA Batteries (4pk) dropped by >60%!
+2026-02-07 17:21:11,677 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Shampoo 400ml dropped by >60%! (Severity: high)
+2026-02-07 17:21:11,677 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:21:11,678 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Shampoo 400ml dropped by >60%!
+2026-02-07 17:21:11,682 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Hand Sanitizer dropped by >60%! (Severity: high)
+2026-02-07 17:21:11,682 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:21:11,683 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Hand Sanitizer dropped by >60%!
+2026-02-07 17:21:11,685 - app.services.notification_service - INFO - 🔔 [System Notification] Sales Alert: Sales for Potato Chips (Salt) dropped by >60%! (Severity: high)
+2026-02-07 17:21:11,685 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-02-07 17:21:11,686 - app.services.notification_service - INFO -    Message: 🚨 Sales Alert: Sales for Potato Chips (Salt) dropped by >60%!

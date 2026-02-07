@@ -1,8 +1,10 @@
 import streamlit as st
 import requests
 import pandas as pd
-
-API_URL = "http://127.0.0.1:8000"
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from config import API_URL
 
 def show():
     st.header("Transaction History")
