@@ -1,33 +1,53 @@
 import streamlit as st
 from views import dashboard, pos, restock, add_product, inventory, history, customers
 
-# Configure the page only once at the very start
+# Configure the page only once
 st.set_page_config(page_title="Smart Inventory", layout="wide")
 
-st.title("Smart Inventory Management System")
+# --- KAMUS TERJEMAHAN (SIMPLE WORDING) ---
+translations = {
+    "English": {
+        "title": "Smart Inventory Management System",
+        "nav_label": "Choose Page",
+        "menu": ["Dashboard", "Sales Counter (POS)", "Order Stock", "Register New Item", "Stock List", "Past Sales", "Customer List"]
+    },
+    "Bahasa Melayu": {
+        "title": "Sistem Pengurusan Stok Pintar",
+        "nav_label": "Pilih Halaman",
+        "menu": ["Papan Pemuka", "Kaunter Jualan (POS)", "Pesan Stok Baru", "Daftar Barang Baru", "Senarai Stok", "Rekod Jualan", "Senarai Pelanggan"]
+    }
+}
+
+# 1. Sidebar untuk pilih bahasa
+lang = st.sidebar.radio("Bahasa / Language", ["English", "Bahasa Melayu"])
+
+# 2. Guna teks berdasarkan bahasa yang dipilih
+st.title(translations[lang]["title"])
 
 # Initialize Session State
 if "cart" not in st.session_state:
     st.session_state.cart = []
 
-# Sidebar Navigation
-sidebar_option = st.sidebar.selectbox(
-    "Navigation",
-    ["Dashboard", "POS Terminal", "Restock Items", "Add Product", "Inventory", "Sales History", "Customers"]
-)
+# 3. Update Sidebar Navigation dengan nama yang mudah
+# Kita guna index untuk tahu mana satu yang dipilih
+menu_options = translations[lang]["menu"]
+sidebar_selection = st.sidebar.selectbox(translations[lang]["nav_label"], menu_options)
+
+# Mapping balik ke views asal (Guna index supaya logic tidak lari)
+choice_index = menu_options.index(sidebar_selection)
 
 # Routing Logic
-if sidebar_option == "Dashboard":
+if choice_index == 0: # Dashboard
     dashboard.show()
-elif sidebar_option == "POS Terminal":
+elif choice_index == 1: # POS
     pos.show()
-elif sidebar_option == "Restock Items":
+elif choice_index == 2: # Restock
     restock.show()
-elif sidebar_option == "Add Product":
+elif choice_index == 3: # Add Product
     add_product.show()
-elif sidebar_option == "Inventory":
+elif choice_index == 4: # Inventory
     inventory.show()
-elif sidebar_option == "Sales History":
+elif choice_index == 5: # History
     history.show()
-elif sidebar_option == "Customers":
+elif choice_index == 6: # Customers
     customers.show()
