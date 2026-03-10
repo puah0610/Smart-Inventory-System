@@ -21,6 +21,35 @@ def get_db():
 def read_transactions(skip: int = 0, limit: int = 200, db: Session = Depends(get_db)):
     return crud.get_transactions(db, skip=skip, limit=limit)
 
+@router.get("/transactions/query")
+def read_transactions_query(
+    skip: int = 0,
+    limit: int = 50,
+    transaction_type: str | None = None,
+    product_id: int | None = None,
+    receipt_id: str | None = None,
+    start_date: str | None = None,
+    end_date: str | None = None,
+    db: Session = Depends(get_db)
+):
+    items, total = crud.get_transactions_filtered(
+        db,
+        skip=skip,
+        limit=limit,
+        transaction_type=transaction_type,
+        product_id=product_id,
+        receipt_id=receipt_id,
+        start_date=start_date,
+        end_date=end_date
+    )
+
+    return {
+        "items": items,
+        "total": total,
+        "skip": skip,
+        "limit": limit
+    }
+
 @router.post("/transaction", response_model=schemas.Transaction)
 def create_transaction(transaction: schemas.TransactionCreate, db: Session = Depends(get_db)):
     # 1. Check if product exists

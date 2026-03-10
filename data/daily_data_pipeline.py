@@ -9,6 +9,7 @@ import time
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(BASE_DIR)
 DB_PATH = os.path.join(PROJECT_ROOT, "backend", "smart_inventory.db")
+MAX_DAILY_TRANSACTIONS = 200
 
 def generate_daily_transactions():
     print(f"[{datetime.now()}] Starting daily transaction generation...")
@@ -21,9 +22,27 @@ def generate_daily_transactions():
     cursor = conn.cursor()
 
     try:
+        today_str = datetime.now().strftime("%Y-%m-%d")
+        cursor.execute(
+            """
+            SELECT COUNT(*)
+            FROM transactions
+            WHERE transaction_type = 'sale'
+              AND date(timestamp) = ?
+            """,
+            (today_str,)
+        )
+        current_daily_count = cursor.fetchone()[0] or 0
+        remaining_slots = MAX_DAILY_TRANSACTIONS - current_daily_count
+
+        if remaining_slots <= 0:
+            print(f"Daily cap reached ({MAX_DAILY_TRANSACTIONS}). Skipping generation for {today_str}.")
+            return
+
         # Get Products
         cursor.execute("SELECT id, name, price, stock_quantity FROM products")
         products = cursor.fetchall()
+        product_stock = {p[0]: p[3] for p in products}
         
         # Get Customers
         cursor.execute("SELECT id FROM customers")
@@ -36,8 +55,8 @@ def generate_daily_transactions():
         current_date = datetime.now()
         is_weekend = current_date.weekday() >= 5
         
-        # Reduced receipts per hour since it's running 12x more often (every hour)
-        # 1-3 receipts per hour (weekday), 2-4 per hour (weekend)
+        # Receipts per generation cycle
+        # 1-3 receipts per cycle (weekday), 2-4 per cycle (weekend)
         num_receipts = random.randint(2, 4) if is_weekend else random.randint(1, 3)
         
         # --- Random Trend Logic ---
@@ -47,6 +66,9 @@ def generate_daily_transactions():
         transactions = []
         
         for _ in range(num_receipts):
+            if len(transactions) >= remaining_slots:
+                break
+
             cust_id = random.choice(customers) if customers and random.random() < 0.3 else None
             receipt_id = str(uuid.uuid4())
             # Use current hour for more realistic real-time simulation
@@ -97,15 +119,36 @@ def generate_daily_transactions():
                 basket_summary[p_id] = basket_summary.get(p_id, 0) + 1
             
             for p_id, qty in basket_summary.items():
-                transactions.append((p_id, 'sale', qty, receipt_id, ts_str, cust_id))
+                if len(transactions) >= remaining_slots:
+                    break
+
+                available_stock = product_stock.get(p_id, 0)
+                if available_stock <= 0:
+                    continue
+
+                sell_qty = min(qty, available_stock)
+                transactions.append((p_id, 'sale', sell_qty, receipt_id, ts_str, cust_id))
+                product_stock[p_id] = available_stock - sell_qty
 
         if transactions:
             cursor.executemany("""
                 INSERT INTO transactions (product_id, transaction_type, quantity, receipt_id, timestamp, customer_id)
                 VALUES (?, ?, ?, ?, ?, ?)
             """, transactions)
+
+            stock_updates = [(stock_qty, product_id) for product_id, stock_qty in product_stock.items()]
+            cursor.executemany(
+                "UPDATE products SET stock_quantity = ? WHERE id = ?",
+                stock_updates
+            )
+
             conn.commit()
-            print(f"Successfully inserted {len(transactions)} transactions.")
+            print(
+                f"Successfully inserted {len(transactions)} transactions. "
+                f"Daily total: {current_daily_count + len(transactions)}/{MAX_DAILY_TRANSACTIONS}."
+            )
+        else:
+            print(f"No transactions inserted this cycle. Daily total remains {current_daily_count}/{MAX_DAILY_TRANSACTIONS}.")
         
     except Exception as e:
         print(f"Error generating transactions: {e}")
@@ -115,9 +158,9 @@ def generate_daily_transactions():
 if __name__ == "__main__":
     # If run directly as a script, it will keep generating data
     print("Continuous Data Generation Pipeline started.")
-    print("Generating hourly batches of sales data...")
+    print("Generating minutely batches of sales data...")
     
     while True:
         generate_daily_transactions()
-        # Wait for 1 hour (60 minutes * 60 seconds)
-        time.sleep(3600) 
+        # Wait for 1 minute
+        time.sleep(60)

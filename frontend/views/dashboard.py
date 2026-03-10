@@ -1,6 +1,7 @@
 import streamlit as st
 import requests
 import pandas as pd
+import altair as alt
 import sys
 import os
 
@@ -114,11 +115,11 @@ def show():
 
                             # Improved Bar Chart for clearer daily breakdown
                             df_forecast['date_label'] = df_forecast['date'].dt.strftime('%a %d')
-                            st.bar_chart(
-                                df_forecast.set_index('date_label')['predicted_revenue'], 
-                                color="#FF4B4B",
-                                use_container_width=True
+                            forecast_chart = alt.Chart(df_forecast).mark_bar(color="#FF4B4B").encode(
+                                x=alt.X('date_label:N', title=None, axis=alt.Axis(labelAngle=0)),
+                                y=alt.Y('predicted_revenue:Q', title='Predicted Revenue')
                             )
+                            st.altair_chart(forecast_chart, use_container_width=True)
                         else:
                             st.info("Record more sales for AI predictions.")
                 except:
@@ -186,16 +187,57 @@ def show():
             with q_left:
                 st.subheader("🏆 Top Sellers")
                 if data['top_selling']:
-                    st.bar_chart(pd.DataFrame(data['top_selling']).set_index("name"))
+                    df_top_selling = pd.DataFrame(data['top_selling'])
+                    top_sellers_chart = alt.Chart(df_top_selling).mark_bar(color="#29B5E8").encode(
+                        x=alt.X('name:N', title=None, sort='-y', axis=alt.Axis(labelAngle=0)),
+                        y=alt.Y('margin:Q', title='Margin')
+                    )
+                    st.altair_chart(top_sellers_chart, use_container_width=True)
             
             with q_right:
                 st.subheader("⚠️ Low Stock Alert")
-                if data['low_stock_items']:
-                    st.table(pd.DataFrame(data['low_stock_items'])[['name', 'stock']])
-                    if st.button("Generate Supplier Email"):
-                        st.code("Subject: Restock Request\n\nItems needed: " + ", ".join([p['name'] for p in data['low_stock_items']]))
-                else:
-                    st.success("Stock levels are healthy!")
+                try:
+                    inv_res = requests.get(f"{API_URL}/products/")
+                    if inv_res.status_code == 200:
+                        inventory_products = inv_res.json()
+                        low_stock_items = [
+                            {
+                                "name": p.get("name"),
+                                "stock": p.get("stock_quantity", 0),
+                                "id": p.get("id")
+                            }
+                            for p in inventory_products
+                            if p.get("stock_quantity", 0) < 10
+                        ]
+
+                        if low_stock_items:
+                            st.table(pd.DataFrame(low_stock_items)[['name', 'stock']])
+                            btn_col1, btn_col2 = st.columns(2)
+                            with btn_col1:
+                                if st.button("Generate Supplier Email"):
+                                    st.code("Subject: Restock Request\n\nItems needed: " + ", ".join([p['name'] for p in low_stock_items]))
+                            with btn_col2:
+                                if st.button("Send WhatsApp Alert"):
+                                    wa_res = requests.post(
+                                        f"{API_URL}/analytics/low-stock/whatsapp",
+                                        json={}
+                                    )
+                                    if wa_res.status_code == 200:
+                                        wa_data = wa_res.json()
+                                        if wa_data.get("success"):
+                                            st.success(
+                                                f"WhatsApp alert sent to {wa_data.get('notified_to')} ({wa_data.get('low_stock_count')} items)."
+                                            )
+                                        else:
+                                            st.error(wa_data.get("message", "Failed to send WhatsApp alert."))
+                                    else:
+                                        st.error("Failed to trigger WhatsApp alert.")
+                        else:
+                            st.success("Stock levels are healthy!")
+                    else:
+                        st.error("Failed to load inventory records for stock alert.")
+                except:
+                    st.caption("Inventory service unavailable.")
 
         else:
             st.error("Failed to load analytics.")

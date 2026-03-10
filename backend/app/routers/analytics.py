@@ -1,9 +1,11 @@
+import os
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from sqlalchemy import func, desc
 from datetime import datetime, timedelta
-from .. import database, models
+from .. import database, models, schemas
 from ..services.analytics_service import AnalyticsService
+from ..services.notification_service import NotificationService
 
 router = APIRouter(
     prefix="/analytics",
@@ -21,6 +23,7 @@ def get_db():
 # Initialize Service
 # In a larger app, we might use dependency injection for this
 analytics_service = AnalyticsService(database.engine)
+notification_service = NotificationService()
 
 @router.get("/forecast")
 def get_demand_forecast():
@@ -172,6 +175,20 @@ def get_analytics_summary(db: Session = Depends(get_db)):
     total_revenue = revenue_profit.revenue if revenue_profit.revenue else 0     
     total_profit = revenue_profit.profit if revenue_profit.profit else 0        
 
+    # Top 5 Products by Margin Contribution (not by quantity)
+    top_margin_products = db.query(
+        models.Product.name.label("name"),
+        func.sum((models.Product.price - models.Product.cost) * models.Transaction.quantity).label("margin")
+    ).select_from(models.Transaction).join(
+        models.Product, models.Transaction.product_id == models.Product.id
+    ).filter(
+        models.Transaction.transaction_type == 'sale'
+    ).group_by(
+        models.Product.id
+    ).order_by(
+        desc("margin")
+    ).limit(5).all()
+
     # 5. Low Stock Alerts (Threshold < 10)
     low_stock = db.query(models.Product).filter(models.Product.stock_quantity < 10).all()
 
@@ -208,6 +225,42 @@ def get_analytics_summary(db: Session = Depends(get_db)):
         "total_revenue": total_revenue,
         "total_profit": total_profit,
         "low_stock_items": [{"name": p.name, "stock": p.stock_quantity, "id": p.id} for p in low_stock],
-        "top_selling": [], # Deprecated or can keep
+        "top_selling": [
+            {"name": item.name, "margin": float(item.margin or 0)}
+            for item in top_margin_products
+        ],
         "ai_insights": insights
+    }
+
+@router.post("/low-stock/whatsapp", response_model=schemas.LowStockWhatsappResponse)
+def send_low_stock_whatsapp_alert(
+    payload: schemas.LowStockWhatsappRequest,
+    db: Session = Depends(get_db)
+):
+    low_stock = db.query(models.Product).filter(models.Product.stock_quantity < 10).all()
+
+    target_number = payload.to_number or os.environ.get("ADMIN_WHATSAPP", "+123456789")
+
+    if not low_stock:
+        return {
+            "success": True,
+            "notified_to": target_number,
+            "low_stock_count": 0,
+            "message": "No low-stock items. Nothing was sent."
+        }
+
+    lines = [f"- {p.name}: {p.stock_quantity}" for p in low_stock]
+    whatsapp_message = (
+        "⚠️ Low Stock Alert\n"
+        f"Total Items: {len(low_stock)}\n"
+        + "\n".join(lines)
+    )
+
+    sent = notification_service.send_whatsapp_alert(target_number, whatsapp_message)
+
+    return {
+        "success": bool(sent),
+        "notified_to": target_number,
+        "low_stock_count": len(low_stock),
+        "message": "Low-stock WhatsApp alert sent." if sent else "Failed to send low-stock WhatsApp alert."
     }

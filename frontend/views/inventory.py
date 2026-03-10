@@ -50,6 +50,10 @@ def show():
     # --- TAB 2: Restock Item (Merged from restock.py) ---
     with tab_restock:
         st.subheader("Quick Restock")
+
+        if "restock_success" in st.session_state:
+            st.success(st.session_state.pop("restock_success"))
+
         # Reuse logic from restock.py
         try:
             res = requests.get(f"{API_URL}/products/")
@@ -64,7 +68,7 @@ def show():
 
         col1, col2 = st.columns(2)
         with col1:
-            with st.form("restock_scan"):
+            with st.form("restock_scan", clear_on_submit=True):
                 st.write("**Method 1: Scan Barcode**")
                 scan_code = st.text_input("Scan Barcode", key="restock_scan_input")
                 qty_scan = st.number_input("Quantity to Add", min_value=1, value=10, key="scan_qty")
@@ -81,7 +85,7 @@ def show():
                         }
                         r = requests.post(f"{API_URL}/inventory/transaction", json=payload)
                         if r.status_code == 200:
-                            st.success(f"Restocked {found_p['name']}!")
+                            st.session_state["restock_success"] = f"Restocked {found_p['name']} (+{qty_scan})"
                             st.rerun()
                         else:
                             st.error(r.text)
@@ -91,20 +95,25 @@ def show():
         with col2:
             st.write("**Method 2: Select from List**")
             if product_options:
-                selected_label = st.selectbox("Product", list(product_options.keys()))
-                qty_manual = st.number_input("Quantity", min_value=1, value=10, key="manual_qty")
-                if st.button("Confirm Restock"):
-                    prod = product_options[selected_label]
-                    payload = {
-                        "product_id": prod['id'],
-                        "transaction_type": "restock",
-                        "quantity": qty_manual,
-                        "receipt_id": f"RESTOCK-{int(time.time())}"
-                    }
-                    r = requests.post(f"{API_URL}/inventory/transaction", json=payload)
-                    if r.status_code == 200:
-                        st.success(f"Restocked {prod['name']}!")
-                        st.rerun()
+                with st.form("restock_manual", clear_on_submit=True):
+                    selected_label = st.selectbox("Product", list(product_options.keys()))
+                    qty_manual = st.number_input("Quantity", min_value=1, value=10, key="manual_qty")
+                    submit_manual = st.form_submit_button("Confirm Restock")
+
+                    if submit_manual:
+                        prod = product_options[selected_label]
+                        payload = {
+                            "product_id": prod['id'],
+                            "transaction_type": "restock",
+                            "quantity": qty_manual,
+                            "receipt_id": f"RESTOCK-{int(time.time())}"
+                        }
+                        r = requests.post(f"{API_URL}/inventory/transaction", json=payload)
+                        if r.status_code == 200:
+                            st.session_state["restock_success"] = f"Restocked {prod['name']} (+{qty_manual})"
+                            st.rerun()
+                        else:
+                            st.error(r.text)
             else:
                 st.info("No products available.")
 

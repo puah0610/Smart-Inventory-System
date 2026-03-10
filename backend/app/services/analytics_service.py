@@ -1,7 +1,6 @@
 
 import pandas as pd
 import numpy as np
-import random
 from sklearn.linear_model import LinearRegression
 from datetime import datetime, timedelta
 from itertools import combinations
@@ -18,6 +17,7 @@ class AnalyticsService:
     def __init__(self, db_engine):
         self.db_engine = db_engine
         self.notifier = NotificationService()
+        self.enable_declining_sales_alerts = False
 
     def predict_demand(self, days_ahead=7):
         """
@@ -150,21 +150,30 @@ class AnalyticsService:
                 
                 support_b = item_counts[item_b]
                 conf_b_a = (pair_freq / support_b) * 100
-                
+
+                # Keep only one direction per pair to avoid mirrored duplicates.
+                # Choose the stronger confidence direction; tie-break by lower support antecedent.
+                if conf_a_b > conf_b_a:
+                    antecedent, consequent, confidence = item_a, item_b, conf_a_b
+                elif conf_b_a > conf_a_b:
+                    antecedent, consequent, confidence = item_b, item_a, conf_b_a
+                else:
+                    if support_a < support_b:
+                        antecedent, consequent = item_a, item_b
+                    elif support_b < support_a:
+                        antecedent, consequent = item_b, item_a
+                    else:
+                        antecedent, consequent = sorted([item_a, item_b])
+                    confidence = conf_a_b
+
                 rules.append({
-                    "antecedent": item_a,
-                    "consequent": item_b,
+                    "antecedent": antecedent,
+                    "consequent": consequent,
                     "frequency": pair_freq,
-                    "confidence": round(conf_a_b, 1)
-                })
-                rules.append({
-                    "antecedent": item_b,
-                    "consequent": item_a,
-                    "frequency": pair_freq,
-                    "confidence": round(conf_b_a, 1)
+                    "confidence": round(confidence, 1)
                 })
 
-        rules.sort(key=lambda x: x['confidence'], reverse=True)
+        rules.sort(key=lambda x: (x['confidence'], x['frequency']), reverse=True)
         return rules[:10]
 
     def _calculate_days_until_stockout(self, stock, sales_history):
@@ -295,9 +304,8 @@ class AnalyticsService:
                     })
 
         # 2. General Trends
-        # Randomize which top trends are shown to avoid repetitiveness
+        # Deterministic selection: top pairs by frequency
         top_correlated = pair_counts.most_common(10)
-        random.shuffle(top_correlated)
         
         for (item1, item2), count in top_correlated[:3]:
             if count >= 2:
@@ -341,7 +349,8 @@ class AnalyticsService:
             full_xy = [(d, p_data.get(d, 0)) for d in range(31)]
             days, confidence = self._calculate_days_until_stockout(p.stock_quantity, full_xy)
             
-            if days is not None and days < 14:
+            # Show only urgent stockout risks in dashboard actions (exclude stable).
+            if days is not None and days < 3:
                 # --- Advanced Decision Support Logic ---
                 # Risk Classification Logic
                 if days < 1:
@@ -349,9 +358,6 @@ class AnalyticsService:
                     urgency = "high"
                 elif days < 3:
                     risk_level = "🟡 **WARNING**"
-                    urgency = "medium"
-                else:
-                    risk_level = "🟢 **STABLE**"
                     urgency = "medium"
 
                 # 1. Calculate Average Daily Sales (Velocity)
@@ -365,11 +371,6 @@ class AnalyticsService:
                 # 3. Recommended Reorder (Lead time coverage + safety stock)
                 # Assume 3 days lead time + 4 days safety = 7 days of stock
                 reorder_qty = int(avg_daily_sales * 10) # 10 days of stock is a safe bet
-                
-                icon = "🚨" if days < 5 else "🔮"
-
-                # Confidence Meter Logic
-                meter = "▓" * (confidence // 10) + "░" * (10 - (confidence // 10))
                 
                 # Enhanced Detailed Message
                 detailed_msg = (
@@ -388,44 +389,52 @@ class AnalyticsService:
                 })
                 
         # 4. Declining Sales Alert (Sales Drop Analysis)
-        two_weeks_ago = datetime.utcnow() - timedelta(days=14)
-        one_week_ago = datetime.utcnow() - timedelta(days=7)
-        
-        recent_sales = db.query(models.Transaction.product_id, func.sum(models.Transaction.quantity))\
-            .filter(models.Transaction.transaction_type == 'sale')\
-            .filter(models.Transaction.timestamp >= one_week_ago)\
-            .group_by(models.Transaction.product_id).all()
-        
-        prev_sales = db.query(models.Transaction.product_id, func.sum(models.Transaction.quantity))\
-            .filter(models.Transaction.transaction_type == 'sale')\
-            .filter(models.Transaction.timestamp >= two_weeks_ago)\
-            .filter(models.Transaction.timestamp < one_week_ago)\
-            .group_by(models.Transaction.product_id).all()
-            
-        recent_map = {pid: qty for pid, qty in recent_sales}
-        prev_map = {pid: qty for pid, qty in prev_sales}
-        
-        for pid, prev_qty in prev_map.items():
-            recent_qty = recent_map.get(pid, 0)
-            # Fetch product only if we have a match to avoid N+1 queries ideally, but acceptable here
-            product = db.query(models.Product).filter(models.Product.id == pid).first()
-            
-            if product and prev_qty >= 3 and recent_qty <= (prev_qty * 0.4):
-                 msg = f"📉 **Sales Drop**: '{product.name}' sales dropped significantly this week. Promotion Recommended."
-                 
-                 # --- TRIGGER NOTIFICATION (Logic Layer -> Notification Engine) ---
-                 self.notifier.notify_admin("Sales Alert", f"Sales for {product.name} dropped by >60%!", severity="high")
-                 
-                 insights.append({
-                    "type": "alert",
-                    "message": msg,
-                    "severity": "medium",
-                    "days_until": 999  # Lower priority than specific stockouts
-                })
+        if self.enable_declining_sales_alerts:
+            two_weeks_ago = datetime.utcnow() - timedelta(days=14)
+            one_week_ago = datetime.utcnow() - timedelta(days=7)
+
+            recent_sales = db.query(models.Transaction.product_id, func.sum(models.Transaction.quantity))\
+                .filter(models.Transaction.transaction_type == 'sale')\
+                .filter(models.Transaction.timestamp >= one_week_ago)\
+                .group_by(models.Transaction.product_id).all()
+
+            prev_sales = db.query(models.Transaction.product_id, func.sum(models.Transaction.quantity))\
+                .filter(models.Transaction.transaction_type == 'sale')\
+                .filter(models.Transaction.timestamp >= two_weeks_ago)\
+                .filter(models.Transaction.timestamp < one_week_ago)\
+                .group_by(models.Transaction.product_id).all()
+
+            recent_map = {pid: qty for pid, qty in recent_sales}
+            prev_map = {pid: qty for pid, qty in prev_sales}
+
+            for pid, prev_qty in prev_map.items():
+                recent_qty = recent_map.get(pid, 0)
+                product = db.query(models.Product).filter(models.Product.id == pid).first()
+
+                if product and prev_qty >= 3 and recent_qty <= (prev_qty * 0.4):
+                    msg = f"📉 **Sales Drop**: '{product.name}' sales dropped significantly this week. Promotion Recommended."
+                    self.notifier.notify_admin("Sales Alert", f"Sales for {product.name} dropped by >60%!", severity="high")
+
+                    insights.append({
+                        "type": "alert",
+                        "message": msg,
+                        "severity": "medium",
+                        "days_until": 999
+                    })
+
+        # Remove duplicates (same type + exact same message)
+        deduped_insights = []
+        seen = set()
+        for insight in insights:
+            key = (insight.get("type"), insight.get("message"))
+            if key in seen:
+                continue
+            seen.add(key)
+            deduped_insights.append(insight)
 
         # Sort insights by urgency (days_until)
         # We use a default of 100 for non-forecast types so they appear after stockouts
-        insights.sort(key=lambda x: x.get('days_until', 100))
+        deduped_insights.sort(key=lambda x: x.get('days_until', 100))
 
-        return insights
+        return deduped_insights
 

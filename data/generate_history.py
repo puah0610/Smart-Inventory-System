@@ -17,9 +17,26 @@ def create_synthetic_history():
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
 
+    # Restore stock from existing sales history before rebuilding it.
+    # This prevents repeated runs from cumulatively depleting inventory.
+    cursor.execute("""
+        SELECT product_id, SUM(quantity)
+        FROM transactions
+        WHERE transaction_type = 'sale'
+        GROUP BY product_id
+    """)
+    historical_sales = cursor.fetchall()
+    if historical_sales:
+        cursor.executemany(
+            "UPDATE products SET stock_quantity = stock_quantity + ? WHERE id = ?",
+            [(sold_qty, product_id) for product_id, sold_qty in historical_sales]
+        )
+        conn.commit()
+
     # Get Products
     cursor.execute("SELECT id, name, price, stock_quantity FROM products")
     products = cursor.fetchall()
+    product_stock = {p[0]: p[3] for p in products}
     
     # Get Customers
     cursor.execute("SELECT id FROM customers")
@@ -132,14 +149,20 @@ def create_synthetic_history():
             
             # Add to transactions list
             for p_id, qty in basket_summary.items():
+                available_stock = product_stock.get(p_id, 0)
+                if available_stock <= 0:
+                    continue
+
+                sell_qty = min(qty, available_stock)
                 transactions.append((
                    p_id,
                    'sale',
-                   qty,
+                   sell_qty,
                    receipt_id,
                    ts_str,
                    cust_id
                 ))
+                product_stock[p_id] = available_stock - sell_qty
 
     # Bulk Insert
     print(f"Inserting {len(transactions)} synthetic transaction records...")
@@ -147,6 +170,12 @@ def create_synthetic_history():
         INSERT INTO transactions (product_id, transaction_type, quantity, receipt_id, timestamp, customer_id)
         VALUES (?, ?, ?, ?, ?, ?)
     """, transactions)
+
+    stock_updates = [(stock_qty, product_id) for product_id, stock_qty in product_stock.items()]
+    cursor.executemany(
+        "UPDATE products SET stock_quantity = ? WHERE id = ?",
+        stock_updates
+    )
 
     conn.commit()
     print("Success! History generated.")

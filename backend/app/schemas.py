@@ -72,3 +72,12 @@ class ProductAnalytics(BaseModel):
     days_of_cover: float
     avg_daily_sales: float
     sales_history: list[dict] # {date: str, qty: int}
+
+class LowStockWhatsappRequest(BaseModel):
+    to_number: Optional[str] = None
+
+class LowStockWhatsappResponse(BaseModel):
+    success: bool
+    notified_to: str
+    low_stock_count: int
+    message: str
