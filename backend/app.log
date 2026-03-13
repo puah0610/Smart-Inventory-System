@@ -3224,3 +3224,25 @@ Total Items: 4
 - Mineral Water: 2
 - Burger: 1
 - Fries: 2
+2026-03-11 09:46:49,376 - app.services.notification_service - INFO - 📱 [WhatsApp SIMULATION] From: whatsapp:+14155238886 -> To: +123456789
+2026-03-11 09:46:49,378 - app.services.notification_service - INFO -    Message: ⚠️ Low Stock Alert
+Total Items: 19
+- Toothbrush: 0
+- Toothpaste: 0
+- Burger: 0
+- Fries: 0
+- Fresh Milk 1L: 0
+- Cheddar CheeseBlock: 0
+- Greek Yogurt 500g: 9
+- Salted Butter: 0
+- Whole Wheat Bread: 8
+- Croissant (Pack of 4): 2
+- Chocolate Muffin: 0
+- Red Wine (Cab Sauv): 0
+- Pasta Sauce (Tomato): 0
+- Olive Oil 500ml: 0
+- Jasmine Rice 5kg: 0
+- Laundry Detergent 2L: 0
+- AA Batteries (4pk): 5
+- Shampoo 400ml: 6
+- Body Wash: 7
