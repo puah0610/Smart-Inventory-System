@@ -1,18 +1,15 @@
 import streamlit as st
-import requests
 import pandas as pd
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from config import API_URL
+from supabase_client import get_supabase_client
 
 def show():
     st.header("Transaction History")
+    supabase = get_supabase_client()
     
     try:
         # Product map for filters + display labels
-        res_prod = requests.get(f"{API_URL}/products/")
-        products = res_prod.json() if res_prod.status_code == 200 else []
+        res_prod = supabase.table("products").select("id,name").order("name").execute()
+        products = res_prod.data or []
         products_map = {p['id']: p['name'] for p in products}
 
         fcol1, fcol2, fcol3, fcol4 = st.columns(4)
@@ -43,46 +40,50 @@ def show():
         if selected_product != "All":
             product_id = int(selected_product.split("ID:")[1].rstrip(")"))
 
-        params = {
-            "skip": skip,
-            "limit": page_size,
-            "transaction_type": None if tx_type == "All" else tx_type,
-            "product_id": product_id,
-            "receipt_id": receipt_filter or None,
-            "start_date": start_date.strftime("%Y-%m-%d") if use_date_filter else None,
-            "end_date": end_date.strftime("%Y-%m-%d") if use_date_filter else None,
-        }
-        params = {k: v for k, v in params.items() if v is not None}
+        query = (
+            supabase.table("transactions")
+            .select("id,receipt_id,timestamp,transaction_type,product_id,quantity,customer_id,products(name)", count="exact")
+            .order("timestamp", desc=True)
+        )
 
-        res = requests.get(f"{API_URL}/inventory/transactions/query", params=params)
-        if res.status_code == 200:
-            payload = res.json()
-            transactions = payload.get("items", [])
-            total = payload.get("total", 0)
+        if tx_type != "All":
+            query = query.eq("transaction_type", tx_type)
+        if product_id is not None:
+            query = query.eq("product_id", product_id)
+        if receipt_filter:
+            query = query.ilike("receipt_id", f"%{receipt_filter}%")
+        if use_date_filter:
+            query = query.gte("timestamp", f"{start_date.strftime('%Y-%m-%d')}T00:00:00")
+            query = query.lte("timestamp", f"{end_date.strftime('%Y-%m-%d')}T23:59:59")
 
-            if transactions:
-                df = pd.DataFrame(transactions)
-                df['product_name'] = df['product_id'].map(products_map)
-                display_cols = ["id", "receipt_id", "timestamp", "transaction_type", "product_name", "quantity", "customer_id"]
-                cols = [c for c in display_cols if c in df.columns]
-                st.dataframe(df[cols], hide_index=True, width='stretch')
+        res = query.range(skip, skip + page_size - 1).execute()
+        transactions = res.data or []
+        total = res.count or 0
 
-                total_pages = max(1, (total + page_size - 1) // page_size)
-                with page_col2:
-                    st.markdown(f"Page **{st.session_state['history_page']} / {total_pages}**")
-
-                nav_col1, nav_col2 = st.columns(2)
-                with nav_col1:
-                    if st.button("⬅️ Previous", disabled=st.session_state["history_page"] <= 1):
-                        st.session_state["history_page"] -= 1
-                        st.rerun()
-                with nav_col2:
-                    if st.button("Next ➡️", disabled=st.session_state["history_page"] >= total_pages):
-                        st.session_state["history_page"] += 1
-                        st.rerun()
+        if transactions:
+            df = pd.DataFrame(transactions)
+            if "products" in df.columns:
+                df["product_name"] = df["products"].apply(lambda x: x.get("name") if isinstance(x, dict) else None)
             else:
-                st.info("No transactions found for current filters.")
+                df['product_name'] = df['product_id'].map(products_map)
+            display_cols = ["id", "receipt_id", "timestamp", "transaction_type", "product_name", "quantity", "customer_id"]
+            cols = [c for c in display_cols if c in df.columns]
+            st.dataframe(df[cols], hide_index=True, use_container_width=True)
+
+            total_pages = max(1, (total + page_size - 1) // page_size)
+            with page_col2:
+                st.markdown(f"Page **{st.session_state['history_page']} / {total_pages}**")
+
+            nav_col1, nav_col2 = st.columns(2)
+            with nav_col1:
+                if st.button("⬅️ Previous", disabled=st.session_state["history_page"] <= 1):
+                    st.session_state["history_page"] -= 1
+                    st.rerun()
+            with nav_col2:
+                if st.button("Next ➡️", disabled=st.session_state["history_page"] >= total_pages):
+                    st.session_state["history_page"] += 1
+                    st.rerun()
         else:
-            st.error("Failed to load transactions.")
+            st.info("No transactions found for current filters.")
     except Exception as e:
         st.error(f"Error: {e}")

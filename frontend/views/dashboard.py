@@ -1,31 +1,129 @@
 import streamlit as st
-import requests
 import pandas as pd
 import altair as alt
-import sys
-import os
+from datetime import datetime, timedelta
+from itertools import combinations
+from supabase_client import get_supabase_client
 
-# Add parent directory to path to allow importing config
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from config import API_URL
+
+def _pair_rules(sales_df: pd.DataFrame):
+    if sales_df.empty or "receipt_id" not in sales_df.columns:
+        return []
+    pair_counts = {}
+    grouped = sales_df.groupby("receipt_id")["product_name"].apply(lambda x: sorted(set([v for v in x if v]))).tolist()
+    for names in grouped:
+        if len(names) < 2:
+            continue
+        for a, b in combinations(names, 2):
+            pair_counts[(a, b)] = pair_counts.get((a, b), 0) + 1
+    if not pair_counts:
+        return []
+    total_baskets = len([g for g in grouped if len(g) >= 2]) or 1
+    rules = []
+    for (a, b), freq in sorted(pair_counts.items(), key=lambda x: x[1], reverse=True):
+        confidence = round((freq / total_baskets) * 100, 1)
+        rules.append(
+            {
+                "antecedent": a,
+                "consequent": b,
+                "confidence": confidence,
+                "frequency": freq,
+            }
+        )
+    return rules[:10]
+
+
+def _build_data(supabase):
+    tx_res = (
+        supabase.table("transactions")
+        .select("receipt_id,quantity,timestamp,transaction_type,products(name,price,cost,category)")
+        .execute()
+    )
+    product_res = supabase.table("products").select("id,name,stock_quantity").execute()
+
+    tx_rows = tx_res.data or []
+    products = product_res.data or []
+    raw = pd.DataFrame(tx_rows)
+    if raw.empty:
+        return raw, pd.DataFrame(), products, []
+
+    raw["timestamp"] = pd.to_datetime(raw["timestamp"], errors="coerce")
+    raw["product_name"] = raw["products"].apply(lambda x: x.get("name") if isinstance(x, dict) else "Unknown")
+    raw["unit_price"] = raw["products"].apply(lambda x: float(x.get("price", 0) or 0) if isinstance(x, dict) else 0.0)
+    raw["unit_cost"] = raw["products"].apply(lambda x: float(x.get("cost", 0) or 0) if isinstance(x, dict) else 0.0)
+    raw["category"] = raw["products"].apply(lambda x: x.get("category") if isinstance(x, dict) else "Uncategorized")
+    raw["quantity"] = raw["quantity"].fillna(0).astype(int)
+
+    sales = raw[raw["transaction_type"] == "sale"].copy()
+    sales["revenue"] = sales["quantity"] * sales["unit_price"]
+    sales["profit"] = sales["quantity"] * (sales["unit_price"] - sales["unit_cost"])
+    sales["date"] = sales["timestamp"].dt.date
+
+    rules = _pair_rules(sales)
+    return raw, sales, products, rules
 
 def show():
     st.header("Smart Dashboard")
+    supabase = get_supabase_client()
     
     try:
-        response = requests.get(f"{API_URL}/analytics/summary")
-        if response.status_code == 200:
-            data = response.json()
+        _, sales_df, products, rules = _build_data(supabase)
+        if not sales_df.empty:
+            total_revenue = float(sales_df["revenue"].sum())
+            total_profit = float(sales_df["profit"].sum())
+
+            today = datetime.now().date()
+            yesterday = today - timedelta(days=1)
+            today_rev = float(sales_df[sales_df["date"] == today]["revenue"].sum())
+            yesterday_rev = float(sales_df[sales_df["date"] == yesterday]["revenue"].sum())
+            pct = ((today_rev - yesterday_rev) / yesterday_rev * 100) if yesterday_rev else 0
+
+            last_7_cutoff = today - timedelta(days=6)
+            sales_7d = sales_df[sales_df["date"] >= last_7_cutoff]
+            revenue_7d = float(sales_7d["revenue"].sum())
+
+            fastest = "N/A"
+            if not sales_7d.empty:
+                fastest = sales_7d.groupby("product_name")["quantity"].sum().sort_values(ascending=False).index[0]
+
+            margin_name = "N/A"
+            if not sales_7d.empty:
+                margin_series = sales_7d.groupby("product_name")["profit"].sum().sort_values(ascending=False)
+                if not margin_series.empty:
+                    margin_name = margin_series.index[0]
+
+            low_stock = [p for p in products if int(p.get("stock_quantity", 0) or 0) < 10]
+            strongest_bundle = f"{rules[0]['antecedent']} + {rules[0]['consequent']}" if rules else "N/A"
+
+            ai_insights = []
+            if rules:
+                ai_insights.append({"type": "bundle", "message": f"Customers often buy {rules[0]['antecedent']} with {rules[0]['consequent']}"})
+            if low_stock:
+                ai_insights.append({"type": "alert", "severity": "high", "message": f"{len(low_stock)} item(s) are below stock threshold."})
+            if fastest != "N/A":
+                ai_insights.append({"type": "promo", "message": f"Promote '{fastest}' bundle add-ons to increase basket size."})
+
+            top_selling = (
+                sales_df.groupby("product_name")["profit"]
+                .sum()
+                .sort_values(ascending=False)
+                .head(8)
+                .rename_axis("name")
+                .reset_index(name="margin")
+                .to_dict(orient="records")
+            )
             
             # --- 1. Top Metrics (Key Performance Indicators) ---
             st.markdown("### 🔑 Key Performance Indicators")
             mcol1, mcol2, mcol3 = st.columns(3)
             
-            daily_stats = data.get("daily", {})
-            today_rev = daily_stats.get("today_revenue", 0)
-            pct = daily_stats.get("pct_change", 0)
-            
-            summary_7d = data.get("business_summary_7d", {})
+            summary_7d = {
+                "revenue": revenue_7d,
+                "fastest_moving": fastest,
+                "highest_margin": margin_name,
+                "at_risk_count": len(low_stock),
+                "strongest_bundle": strongest_bundle,
+            }
 
             # Standardized Metric Style for all metrics
             def render_metric_card(label, value, delta=None):
@@ -50,9 +148,9 @@ def show():
             with mcol1:
                 render_metric_card("Today's Revenue", f"RM {today_rev:,.2f}", f"{pct:+.1f}")
             with mcol2:
-                render_metric_card("Total Revenue", f"RM {data['total_revenue']:,.2f}")
+                render_metric_card("Total Revenue", f"RM {total_revenue:,.2f}")
             with mcol3:
-                render_metric_card("Total Profit", f"RM {data['total_profit']:,.2f}")
+                render_metric_card("Total Profit", f"RM {total_profit:,.2f}")
 
             # --- 1.2 Business Summary (Last 7 Days) ---
             st.markdown("### 📊 Business Summary (Last 7 Days)")
@@ -83,46 +181,38 @@ def show():
             with col_left:
                 st.subheader("📉 Past 30 Days Trend")
                 try:
-                    hist_res = requests.get(f"{API_URL}/analytics/sales-history")
-                    if hist_res.status_code == 200:
-                        h_data = hist_res.json().get("history", [])
-                        if h_data:
-                            df_hist = pd.DataFrame(h_data)
-                            # Sort by actual datetime objects, not strings
-                            df_hist['date'] = pd.to_datetime(df_hist['date'])
-                            df_hist = df_hist.sort_values('date')
-                            # Map revenue to the sorted date index
-                            st.line_chart(df_hist.set_index('date')['revenue'], color="#29B5E8")
-                        else:
-                            st.info("No historical data yet.")
-                except:
+                    last_30 = datetime.now().date() - timedelta(days=30)
+                    hist = sales_df[sales_df["date"] >= last_30].groupby("date")["revenue"].sum().reset_index()
+                    if not hist.empty:
+                        hist["date"] = pd.to_datetime(hist["date"])
+                        hist = hist.sort_values("date")
+                        st.line_chart(hist.set_index("date")["revenue"], color="#29B5E8")
+                    else:
+                        st.info("No historical data yet.")
+                except Exception:
                     st.caption("History engine unavailable.")
 
             with col_right:
                 st.subheader("📈 AI Revenue Forecast")
                 try:
-                    forecast_res = requests.get(f"{API_URL}/analytics/forecast")
-                    if forecast_res.status_code == 200:
-                        f_data = forecast_res.json().get("forecast", [])
-                        if f_data:
-                            df_forecast = pd.DataFrame(f_data)
-                            df_forecast['date'] = pd.to_datetime(df_forecast['date'])
-                            df_forecast = df_forecast.sort_values('date')
-                            
-                            # Calculate total forecasted revenue for the week
-                            total_forecast = df_forecast['predicted_revenue'].sum()
-                            st.metric("Total 7-Day Forecast", f"RM {total_forecast:,.2f}")
+                    daily_rev = sales_df.groupby("date")["revenue"].sum().sort_index()
+                    if len(daily_rev) >= 3:
+                        baseline = float(daily_rev.tail(7).mean())
+                        forecast_dates = [datetime.now().date() + timedelta(days=i) for i in range(1, 8)]
+                        forecast_values = [baseline for _ in forecast_dates]
+                        df_forecast = pd.DataFrame({"date": pd.to_datetime(forecast_dates), "predicted_revenue": forecast_values})
 
-                            # Improved Bar Chart for clearer daily breakdown
-                            df_forecast['date_label'] = df_forecast['date'].dt.strftime('%a %d')
-                            forecast_chart = alt.Chart(df_forecast).mark_bar(color="#FF4B4B").encode(
-                                x=alt.X('date_label:N', title=None, axis=alt.Axis(labelAngle=0)),
-                                y=alt.Y('predicted_revenue:Q', title='Predicted Revenue')
-                            )
-                            st.altair_chart(forecast_chart, use_container_width=True)
-                        else:
-                            st.info("Record more sales for AI predictions.")
-                except:
+                        total_forecast = df_forecast["predicted_revenue"].sum()
+                        st.metric("Total 7-Day Forecast", f"RM {total_forecast:,.2f}")
+                        df_forecast["date_label"] = df_forecast["date"].dt.strftime("%a %d")
+                        forecast_chart = alt.Chart(df_forecast).mark_bar(color="#FF4B4B").encode(
+                            x=alt.X("date_label:N", title=None, axis=alt.Axis(labelAngle=0)),
+                            y=alt.Y("predicted_revenue:Q", title="Predicted Revenue"),
+                        )
+                        st.altair_chart(forecast_chart, use_container_width=True)
+                    else:
+                        st.info("Record more sales for AI predictions.")
+                except Exception:
                     st.caption("Forecast engine unavailable.")
 
             st.divider()
@@ -134,7 +224,7 @@ def show():
             
             with c_patterns:
                 st.markdown("#### 🛍️ Shopping Patterns")
-                patterns = [i for i in data.get("ai_insights", []) if i['type'] == 'bundle']
+                patterns = [i for i in ai_insights if i.get("type") == "bundle"]
                 
                 with st.container(height=300): # Scrollable container
                     if patterns:
@@ -145,7 +235,7 @@ def show():
                 
             with c_actions:
                 st.markdown("#### 🚀 Recommended Actions")
-                actions = [i for i in data.get("ai_insights", []) if i['type'] in ['promo', 'clearance', 'forecast', 'alert']]
+                actions = [i for i in ai_insights if i.get("type") in ["promo", "clearance", "forecast", "alert"]]
                 
                 with st.container(height=300): # Scrollable container
                     if actions:
@@ -162,22 +252,18 @@ def show():
             # --- 3.5 Detailed Market Basket Analysis ---
             st.markdown("#### 🔍 Detailed Product Associations")
             try:
-                mba_res = requests.get(f"{API_URL}/analytics/market-basket")
-                if mba_res.status_code == 200:
-                    rules = mba_res.json().get("rules", [])
-                    if rules:
-                        # Format for display
-                        display_data = []
-                        for rule in rules:
-                            display_data.append({
-                                "If Client Buys...": rule['antecedent'],
-                                "They Also Buy...": rule['consequent'],
-                                "Likelihood (%)": f"{rule['confidence']}%",
-                                "Occurrences": rule['frequency']
-                            })
-                        st.dataframe(pd.DataFrame(display_data), use_container_width=True, hide_index=True)
-                    else:
-                        st.caption("Not enough diversity in transactions to show associations.")
+                if rules:
+                    display_data = []
+                    for rule in rules:
+                        display_data.append({
+                            "If Client Buys...": rule['antecedent'],
+                            "They Also Buy...": rule['consequent'],
+                            "Likelihood (%)": f"{rule['confidence']}%",
+                            "Occurrences": rule['frequency']
+                        })
+                    st.dataframe(pd.DataFrame(display_data), use_container_width=True, hide_index=True)
+                else:
+                    st.caption("Not enough diversity in transactions to show associations.")
             except: pass
 
             st.divider()
@@ -186,8 +272,8 @@ def show():
             q_left, q_right = st.columns(2)
             with q_left:
                 st.subheader("🏆 Top Sellers")
-                if data['top_selling']:
-                    df_top_selling = pd.DataFrame(data['top_selling'])
+                if top_selling:
+                    df_top_selling = pd.DataFrame(top_selling)
                     top_sellers_chart = alt.Chart(df_top_selling).mark_bar(color="#29B5E8").encode(
                         x=alt.X('name:N', title=None, sort='-y', axis=alt.Axis(labelAngle=0)),
                         y=alt.Y('margin:Q', title='Margin')
@@ -197,49 +283,26 @@ def show():
             with q_right:
                 st.subheader("⚠️ Low Stock Alert")
                 try:
-                    inv_res = requests.get(f"{API_URL}/products/")
-                    if inv_res.status_code == 200:
-                        inventory_products = inv_res.json()
-                        low_stock_items = [
-                            {
-                                "name": p.get("name"),
-                                "stock": p.get("stock_quantity", 0),
-                                "id": p.get("id")
-                            }
-                            for p in inventory_products
-                            if p.get("stock_quantity", 0) < 10
-                        ]
+                    low_stock_items = [
+                        {
+                            "name": p.get("name"),
+                            "stock": p.get("stock_quantity", 0),
+                            "id": p.get("id"),
+                        }
+                        for p in products
+                        if int(p.get("stock_quantity", 0) or 0) < 10
+                    ]
 
-                        if low_stock_items:
-                            st.table(pd.DataFrame(low_stock_items)[['name', 'stock']])
-                            btn_col1, btn_col2 = st.columns(2)
-                            with btn_col1:
-                                if st.button("Generate Supplier Email"):
-                                    st.code("Subject: Restock Request\n\nItems needed: " + ", ".join([p['name'] for p in low_stock_items]))
-                            with btn_col2:
-                                if st.button("Send WhatsApp Alert"):
-                                    wa_res = requests.post(
-                                        f"{API_URL}/analytics/low-stock/whatsapp",
-                                        json={}
-                                    )
-                                    if wa_res.status_code == 200:
-                                        wa_data = wa_res.json()
-                                        if wa_data.get("success"):
-                                            st.success(
-                                                f"WhatsApp alert sent to {wa_data.get('notified_to')} ({wa_data.get('low_stock_count')} items)."
-                                            )
-                                        else:
-                                            st.error(wa_data.get("message", "Failed to send WhatsApp alert."))
-                                    else:
-                                        st.error("Failed to trigger WhatsApp alert.")
-                        else:
-                            st.success("Stock levels are healthy!")
+                    if low_stock_items:
+                        st.table(pd.DataFrame(low_stock_items)[["name", "stock"]])
+                        if st.button("Generate Supplier Email"):
+                            st.code("Subject: Restock Request\n\nItems needed: " + ", ".join([p["name"] for p in low_stock_items]))
                     else:
-                        st.error("Failed to load inventory records for stock alert.")
-                except:
+                        st.success("Stock levels are healthy!")
+                except Exception:
                     st.caption("Inventory service unavailable.")
 
         else:
-            st.error("Failed to load analytics.")
+            st.info("Not enough sales data yet to render dashboard analytics.")
     except Exception as e:
-        st.error(f"Error connecting to backend: {e}")
+        st.error(f"Error loading dashboard data: {e}")

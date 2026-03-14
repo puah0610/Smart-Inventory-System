@@ -1,9 +1,24 @@
+# Web Framework & Server
 fastapi
 uvicorn
-sqlalchemy
-pydantic
-requests
-pandas
 python-multipart
-streamlit
+
+# Database & Integration
+sqlalchemy
+psycopg2-binary
+supabase
+st-supabase-connection
+
+# Data Science & AI
+pandas
+numpy
 scikit-learn
+
+# Frontend & HTTP
+streamlit
+requests
+
+# Utilities
+python-dotenv
+pydantic
+pyzbar

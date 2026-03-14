@@ -1,49 +1,43 @@
 import streamlit as st
-import requests
 import pandas as pd
 import time
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from config import API_URL
+from supabase_client import get_supabase_client
 
 def show():
     st.header("Inventory Management")
+    supabase = get_supabase_client()
     
     tab_list, tab_restock, tab_add = st.tabs(["📦 Stock Levels", "➕ Restock Item", "🆕 Add New Product"])
 
     # --- TAB 1: Inventory List ---
     with tab_list:
         try:
-            res = requests.get(f"{API_URL}/products/")
-            if res.status_code == 200:
-                products = res.json()
-                if products:
-                    df = pd.DataFrame(products)
-                    
-                    # Reorder columns: ID first, then Name, etc.
-                    desired_order = ["id", "name", "category", "stock_quantity", "price", "cost", "barcode"]
-                    # Filter to only ensure columns that actually exist in the data are selected
-                    cols_to_use = [c for c in desired_order if c in df.columns]
-                    df = df[cols_to_use]
-                    
-                    # Rename columns to be more readable
-                    df = df.rename(columns={
-                        "id": "ID",
-                        "name": "Product Name",
-                        "category": "Category",
-                        "stock_quantity": "Current Stock",
-                        "price": "Selling Price ($)",
-                        "cost": "Unit Cost ($)",
-                        "barcode": "Barcode / SKU"
-                    })
-                    
-                    # Display with hidden index for a cleaner look
-                    st.dataframe(df, hide_index=True, use_container_width=True)
-                else:
-                    st.info("No products found.")
+            res = supabase.table("products").select("*").order("name").execute()
+            products = res.data or []
+            if products:
+                df = pd.DataFrame(products)
+                
+                # Reorder columns: ID first, then Name, etc.
+                desired_order = ["id", "name", "category", "stock_quantity", "price", "cost", "barcode"]
+                # Filter to only ensure columns that actually exist in the data are selected
+                cols_to_use = [c for c in desired_order if c in df.columns]
+                df = df[cols_to_use]
+                
+                # Rename columns to be more readable
+                df = df.rename(columns={
+                    "id": "ID",
+                    "name": "Product Name",
+                    "category": "Category",
+                    "stock_quantity": "Current Stock",
+                    "price": "Selling Price ($)",
+                    "cost": "Unit Cost ($)",
+                    "barcode": "Barcode / SKU"
+                })
+                
+                # Display with hidden index for a cleaner look
+                st.dataframe(df, hide_index=True, use_container_width=True)
             else:
-                st.error("Failed to fetch inventory")
+                st.info("No products found.")
         except Exception as e:
             st.error(f"Connection error: {e}")
 
@@ -56,15 +50,24 @@ def show():
 
         # Reuse logic from restock.py
         try:
-            res = requests.get(f"{API_URL}/products/")
-            if res.status_code == 200:
-                products = res.json()
-                product_options = {f"{p['name']} (SKU: {p['barcode']})": p for p in products}
-            else:
-                products = []
-                product_options = {}
-        except:
+            res = supabase.table("products").select("id,name,barcode,stock_quantity").order("name").execute()
+            products = res.data or []
+            product_options = {f"{p['name']} (SKU: {p['barcode']})": p for p in products}
+        except Exception:
+            products = []
             product_options = {}
+
+        def run_restock(prod, qty):
+            receipt_id = f"RESTOCK-{int(time.time())}"
+            new_stock = int(prod.get("stock_quantity", 0)) + int(qty)
+            supabase.table("products").update({"stock_quantity": new_stock}).eq("id", prod["id"]).execute()
+            supabase.table("transactions").insert({
+                "product_id": prod["id"],
+                "transaction_type": "restock",
+                "quantity": int(qty),
+                "receipt_id": receipt_id,
+                "customer_id": None,
+            }).execute()
 
         col1, col2 = st.columns(2)
         with col1:
@@ -77,18 +80,12 @@ def show():
                 if submit_scan and scan_code:
                     found_p = next((p for p in products if p['barcode'] == scan_code), None)
                     if found_p:
-                        payload = {
-                            "product_id": found_p['id'],
-                            "transaction_type": "restock",
-                            "quantity": qty_scan,
-                            "receipt_id": f"RESTOCK-{int(time.time())}"
-                        }
-                        r = requests.post(f"{API_URL}/inventory/transaction", json=payload)
-                        if r.status_code == 200:
+                        try:
+                            run_restock(found_p, qty_scan)
                             st.session_state["restock_success"] = f"Restocked {found_p['name']} (+{qty_scan})"
                             st.rerun()
-                        else:
-                            st.error(r.text)
+                        except Exception as e:
+                            st.error(str(e))
                     else:
                         st.error("Barcode not found.")
 
@@ -102,18 +99,12 @@ def show():
 
                     if submit_manual:
                         prod = product_options[selected_label]
-                        payload = {
-                            "product_id": prod['id'],
-                            "transaction_type": "restock",
-                            "quantity": qty_manual,
-                            "receipt_id": f"RESTOCK-{int(time.time())}"
-                        }
-                        r = requests.post(f"{API_URL}/inventory/transaction", json=payload)
-                        if r.status_code == 200:
+                        try:
+                            run_restock(prod, qty_manual)
                             st.session_state["restock_success"] = f"Restocked {prod['name']} (+{qty_manual})"
                             st.rerun()
-                        else:
-                            st.error(r.text)
+                        except Exception as e:
+                            st.error(str(e))
             else:
                 st.info("No products available.")
 
@@ -134,9 +125,9 @@ def show():
                     "name": a_name, "barcode": a_barcode, "price": a_price, 
                     "cost": a_cost, "category": a_category, "stock_quantity": a_stock
                 }
-                res = requests.post(f"{API_URL}/products/", json=payload)
-                if res.status_code == 200:
+                try:
+                    supabase.table("products").insert(payload).execute()
                     st.success("Product created!")
                     st.rerun()
-                else:
-                    st.error(res.text)
+                except Exception as e:
+                    st.error(str(e))
