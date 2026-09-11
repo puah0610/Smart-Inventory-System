@@ -3,6 +3,7 @@ from sqlalchemy.orm import Session
 from sqlalchemy import func, desc
 from typing import List
 from .. import crud, models, schemas, database
+from datetime import datetime, timedelta
 
 router = APIRouter(
     prefix="/products",
@@ -62,14 +63,40 @@ def get_customer_profile(customer_id: int, db: Session = Depends(get_db)):
     
     top_items = [{"name": r.name, "qty": r.qty} for r in top_items_query]
     
-    # Segmentation Logic
+    # --- RFM Segmentation Logic ---
+    now = datetime.utcnow()
+    recency_days = 999
+    if last_visit:
+        recency_days = (now - last_visit).days
+        
     segment = "New"
-    if total_spent > 500:
-        segment = "VIP 🌟"
-    elif total_spent > 100:
-        segment = "Regular 😊"
-    elif visit_count > 1:
-        segment = "Returning"
+    
+    # 1. Champions: Bought recently, buy often, spend a lot
+    if recency_days <= 30 and visit_count >= 3 and total_spent >= 300:
+        segment = "🏆 Champion"
+        
+    # 2. Loyal Customers: Spend good money
+    elif total_spent >= 200:
+        segment = "💎 Loyal"
+        
+    # 3. Potential Loaylist: Recent visitor with decent spend
+    elif recency_days <= 30 and total_spent >= 50:
+        segment = "🌟 Potential Loyalist"
+        
+    # 4. At Risk: Big spenders who haven't visited in a while (> 60 days)
+    elif recency_days > 60 and total_spent > 100:
+        segment = "⚠️ At Risk"
+        
+    # 5. Hibernating: Low spend, long time ago
+    elif recency_days > 90:
+        segment = "💤 Hibernating"
+        
+    # 6. About to Sleep: Below average recency
+    elif recency_days > 30:
+        segment = "👀 About to Sleep"
+        
+    else:
+        segment = "Regular"
         
     return {
         "customer": customer,
@@ -98,3 +125,67 @@ def read_product(barcode: str, db: Session = Depends(get_db)):
     if db_product is None:
         raise HTTPException(status_code=404, detail="Product not found")
     return db_product
+
+@router.get("/id/{product_id}/analytics", response_model=schemas.ProductAnalytics)
+def get_product_analytics(product_id: int, db: Session = Depends(get_db)):
+    product = db.query(models.Product).filter(models.Product.id == product_id).first()
+    if not product:
+        raise HTTPException(status_code=404, detail="Product not found")
+
+    # 1. Total Stats (All Time)
+    stats = db.query(
+        func.sum(models.Transaction.quantity).label("total_qty"),
+        func.sum(models.Transaction.quantity * models.Product.price).label("revenue"),
+        func.sum(models.Transaction.quantity * (models.Product.price - models.Product.cost)).label("profit")
+    ).select_from(models.Transaction).join(
+        models.Product, models.Transaction.product_id == models.Product.id
+    ).filter(
+        models.Transaction.product_id == product_id,
+        models.Transaction.transaction_type == 'sale'
+    ).first()
+
+    total_qty = stats.total_qty or 0
+    total_revenue = stats.revenue or 0.0
+    total_profit = stats.profit or 0.0
+
+    # 2. Days of Cover Logic (Based on last 30 days)
+    now = datetime.utcnow()
+    thirty_days_ago = now - timedelta(days=30)
+    
+    qty_last_30 = db.query(func.sum(models.Transaction.quantity))\
+        .filter(
+            models.Transaction.product_id == product_id,
+            models.Transaction.transaction_type == 'sale',
+            models.Transaction.timestamp >= thirty_days_ago
+        ).scalar() or 0
+        
+    avg_daily_sales = qty_last_30 / 30.0
+    
+    if avg_daily_sales > 0:
+        days_of_cover = product.stock_quantity / avg_daily_sales
+    else:
+        days_of_cover = 999.0 # Infinite cover (Dead stock)
+
+    # 3. Sales History (Daily for chart)
+    # SQLite 'date' function compatible
+    history_query = db.query(
+        func.date(models.Transaction.timestamp).label("date"),
+        func.sum(models.Transaction.quantity).label("qty")
+    ).filter(
+        models.Transaction.product_id == product_id,
+        models.Transaction.transaction_type == 'sale',
+        models.Transaction.timestamp >= thirty_days_ago
+    ).group_by("date").order_by("date").all()
+    
+    history_data = [{"date": str(r.date), "qty": r.qty} for r in history_query]
+
+    return {
+        "product": product,
+        "total_sold_all_time": total_qty,
+        "total_revenue_all_time": total_revenue,
+        "total_profit_all_time": total_profit,
+        "current_stock": product.stock_quantity,
+        "days_of_cover": round(days_of_cover, 1),
+        "avg_daily_sales": round(avg_daily_sales, 2),
+        "sales_history": history_data
+    }

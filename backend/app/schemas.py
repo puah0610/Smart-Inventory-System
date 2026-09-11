@@ -62,3 +62,22 @@ class Transaction(TransactionBase):
 
     class Config:
         from_attributes = True
+
+class ProductAnalytics(BaseModel):
+    product: Product
+    total_sold_all_time: int
+    total_revenue_all_time: float
+    total_profit_all_time: float
+    current_stock: int
+    days_of_cover: float
+    avg_daily_sales: float
+    sales_history: list[dict] # {date: str, qty: int}
+
+class LowStockWhatsappRequest(BaseModel):
+    to_number: Optional[str] = None
+
+class LowStockWhatsappResponse(BaseModel):
+    success: bool
+    notified_to: str
+    low_stock_count: int
+    message: str

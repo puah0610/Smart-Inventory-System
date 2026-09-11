@@ -1,19 +1,19 @@
 import streamlit as st
-import requests
 import pandas as pd
 import time
-
-API_URL = "http://127.0.0.1:8000"
+import uuid
+from supabase_client import get_supabase_client
 
 def show():
     st.header("Point of Sale")
+    supabase = get_supabase_client()
 
     # --- Customer Selection ---
     customer_id = None
     try:
-        cust_res = requests.get(f"{API_URL}/products/customers/")
-        if cust_res.status_code == 200:
-            customers = cust_res.json()
+        cust_res = supabase.table("customers").select("id,name,phone").order("name").execute()
+        if cust_res.data:
+            customers = cust_res.data
             # Format: "Name (Phone)"
             cust_options = {f"{c['name']} ({c['phone']})": c['id'] for c in customers}
             # Add Guest option
@@ -26,6 +26,8 @@ def show():
             
             if selected_cust_label != "Guest / Walk-in":
                 customer_id = cust_options.get(selected_cust_label)
+        else:
+            st.caption("No customers loaded. Sales can still continue as Guest.")
     except Exception as e:
         st.warning(f"Could not load customers: {e}")
 
@@ -73,9 +75,9 @@ def show():
     if scanned_code:
         # 1. Look up product
         try:
-            res = requests.get(f"{API_URL}/products/{scanned_code}")
-            if res.status_code == 200:
-                product = res.json()
+            res = supabase.table("products").select("id,name,price,barcode").eq("barcode", scanned_code).maybe_single().execute()
+            product = res.data
+            if product:
                 
                 # 2. Add to Session Cart
                 # Check if already in cart to increment qty
@@ -97,7 +99,7 @@ def show():
             else:
                 st.error(f"Product with barcode '{scanned_code}' not found!")
         except Exception as e:
-            st.error(f"Connection error: {e}")
+            st.error(f"Lookup error: {e}")
 
     # Display Cart
     st.subheader("Current Cart")
@@ -115,7 +117,7 @@ def show():
                 "quantity": st.column_config.NumberColumn("Qty", min_value=1, step=1, required=True),
             },
             num_rows="dynamic", # Allow Deletion
-            width='stretch',
+            use_container_width=True,
             key="cart_editor"
         )
         
@@ -150,43 +152,56 @@ def show():
 
         with col_pay:
             # Checkout Button
-            # Updated to width='stretch' per Streamlit deprecation warning
-            if st.button("💳 Complete Sale", type="primary", use_container_width=True): # reverting this one as width='stretch' is not standard for button yet in some versions, sticking to warning for data_editor first. 
-                import uuid
+            if st.button("💳 Complete Sale", type="primary", use_container_width=True):
                 # Generate a single receipt ID for this entire cart
                 receipt_id = str(uuid.uuid4())
-                
-                # Prepare Batch Payload
-                batch_items = []
-                for item in st.session_state.cart:
-                    batch_items.append({
-                        "product_id": item['product_id'],
-                        "transaction_type": "sale",
-                        "quantity": item['quantity']
-                    })
-                
-                payload = {
-                    "items": batch_items,
-                    "receipt_id": receipt_id,
-                    "customer_id": customer_id 
-                }
-                
+
                 try:
-                    # Send EVERYTHING in one go
-                    res = requests.post(f"{API_URL}/inventory/batch_transaction", json=payload)
-                    
-                    if res.status_code == 200:
-                        st.toast("Transaction Complete!", icon="🎉")
-                        st.session_state.cart = [] # Clear cart
-                        time.sleep(1) # Give toast time to show
-                        st.rerun()
-                    else:
-                        # Show specific error from backend (e.g., "Insufficient stock for 'Orange'")
-                        error_detail = res.json().get('detail', res.text)
-                        st.error(f"Transaction Failed: {error_detail}")
-                        
+                    # Validate stock before writing transaction rows.
+                    product_ids = [item["product_id"] for item in st.session_state.cart]
+                    stock_rows = (
+                        supabase.table("products")
+                        .select("id,name,stock_quantity")
+                        .in_("id", product_ids)
+                        .execute()
+                    )
+                    stock_map = {row["id"]: row for row in (stock_rows.data or [])}
+
+                    insufficient = []
+                    for item in st.session_state.cart:
+                        current_stock = stock_map.get(item["product_id"], {}).get("stock_quantity", 0)
+                        if current_stock < item["quantity"]:
+                            insufficient.append(f"{item['name']} (have {current_stock}, need {item['quantity']})")
+
+                    if insufficient:
+                        st.error("Transaction Failed: Insufficient stock for " + ", ".join(insufficient))
+                        return
+
+                    tx_payload = []
+                    for item in st.session_state.cart:
+                        tx_payload.append(
+                            {
+                                "product_id": item["product_id"],
+                                "transaction_type": "sale",
+                                "quantity": int(item["quantity"]),
+                                "receipt_id": receipt_id,
+                                "customer_id": str(customer_id) if customer_id is not None else None,
+                            }
+                        )
+
+                    supabase.table("transactions").insert(tx_payload).execute()
+
+                    for item in st.session_state.cart:
+                        current_stock = stock_map[item["product_id"]]["stock_quantity"]
+                        new_stock = current_stock - int(item["quantity"])
+                        supabase.table("products").update({"stock_quantity": new_stock}).eq("id", item["product_id"]).execute()
+
+                    st.toast("Transaction Complete!", icon="🎉")
+                    st.session_state.cart = []
+                    time.sleep(1)
+                    st.rerun()
                 except Exception as e:
-                    st.error(f"Connection Error: {e}")
+                    st.error(f"Transaction Failed: {e}")
     else:
         st.info("Cart is empty. Scan items to begin.")
         
